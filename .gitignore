@@ -1,10 +1,34 @@
-
+// Contiki ignores
 
 *~
 *.z1
 *.a
 *.map
 obj_z1/
+
+*~ 
+*core 
+core 
+*.srec 
+*.lst 
+*.map 
+*.cprg
+*.bin 
+*.data 
+contiki*.a 
+*.firmware 
+core-labels.S 
+*.ihex 
+*.ini
+*.ce 
+*.co
+obj_native
+
+
+
+
+
+// My ignores
 
 flashprof.txt
 ramprof.txt
