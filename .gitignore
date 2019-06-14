@@ -3,6 +3,9 @@
 *~
 *.z1
 *.a
+*.map
+obj_z1/
 
 flashprof.txt
 ramprof.txt
+
