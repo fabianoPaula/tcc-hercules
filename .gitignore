@@ -24,6 +24,10 @@ core-labels.S
 *.co
 obj_native
 
+// Project 
+
+collect_*
+
 
 
 
