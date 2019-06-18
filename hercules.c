@@ -1,7 +1,3 @@
-#include <stdlib.h>
-#include <stdio.h> // For printf()
-#include <math.h>
-
 #include "contiki.h"
 #include "lib/random.h"
 #include "sys/ctimer.h"
@@ -12,6 +8,7 @@
 
 #include "simple-udp.h"
 #include "servreg-hack.h"
+#include "powertrace.h"
 
 #include "net/rpl/rpl.h"
 
@@ -21,9 +18,9 @@
 #define UDP_PORT 1234
 #define SERVICE_ID 190
 
-#define SEND_INTERVAL		(10 * CLOCK_SECOND)
-#define SEND_TIME		(random_rand() % (SEND_INTERVAL))
+#define SEND_INTERVAL   (60 * CLOCK_SECOND)
 
+#define NUMBER_OF_SAMPLES 100
 #define NUMBER_OF_BINS 10
 #define NUMBER_OF_INTERVALS 10
 
@@ -229,25 +226,63 @@ void hercules(int* data, int data_size){
 
 }
 
+static uint16_t raw_samples[NUMBER_OF_SAMPLES];
+static uint16_t raw_samples_counter = 0;
+
+static uint16_t samples[NUMBER_OF_SAMPLES];
+static uint16_t samples_counter = 0;
+
+void copy_raw_samples_to_samples(){
+  uint16_t i;
+  for(i = 0; i < raw_samples_counter; i++){
+    samples[i] = raw_samples[i];
+  }
+  samples_counter = raw_samples_counter;
+  raw_samples_counter = 0;
+}
+
+static struct simple_udp_connection unicast_connection;
+
 /*---------------------------------------------------------------------------*/
 PROCESS(unicast_receiver_process, "Unicast receiver example process");
 AUTOSTART_PROCESSES(&unicast_receiver_process);
 /*---------------------------------------------------------------------------*/
-static void receiver(struct simple_udp_connection *c,
+static void
+receiver(struct simple_udp_connection *c,
          const uip_ipaddr_t *sender_addr,
          uint16_t sender_port,
          const uip_ipaddr_t *receiver_addr,
          uint16_t receiver_port,
          const uint8_t *data,
-         uint16_t datalen) 
-{
-  printf("Data received from ");
-  uip_debug_ipaddr_print(sender_addr);
-  printf(" on port %d from port %d with length %d: '%s'\n",
-         receiver_port, sender_port, datalen, data);
+         uint16_t datalen)
+{ 
+  uint16_t i, j;
+  uint16_t aux;
+  // printf("From ");
+  // uip_debug_ipaddr_print(sender_addr);
+  // printf(": '%s'\n",data);
+
+  raw_samples_counter %= NUMBER_OF_SAMPLES;
+  samples[raw_samples_counter] = 0;
+  for(i = 0; i < (datalen - 1); i++){
+    aux = 1;
+    for(j = 1; j < (datalen - 1 - i); j++) aux *= 10;
+
+    samples[raw_samples_counter] += (data[i] - '0')*aux;
+  }
+  raw_samples_counter++;
+
+  // printf("Data[%u]: [", raw_samples_counter);
+  // for(i = 0; i < raw_samples_counter; i++){
+  //   printf("%u, ", samples[i]);  
+  // }
+  // printf("];\n");
 }
+
 /*---------------------------------------------------------------------------*/
-static uip_ipaddr_t * set_global_address(void) {
+static uip_ipaddr_t *
+set_global_address(void)
+{
   static uip_ipaddr_t ipaddr;
   int i;
   uint8_t state;
@@ -269,7 +304,9 @@ static uip_ipaddr_t * set_global_address(void) {
   return &ipaddr;
 }
 /*---------------------------------------------------------------------------*/
-static void create_rpl_dag(uip_ipaddr_t *ipaddr) {
+static void
+create_rpl_dag(uip_ipaddr_t *ipaddr)
+{
   struct uip_ds6_addr *root_if;
 
   root_if = uip_ds6_addr_lookup(ipaddr);
@@ -289,10 +326,16 @@ static void create_rpl_dag(uip_ipaddr_t *ipaddr) {
 /*---------------------------------------------------------------------------*/
 PROCESS_THREAD(unicast_receiver_process, ev, data)
 {
+  static struct etimer periodic_timer;
+  static struct etimer send_timer;
   uip_ipaddr_t *ipaddr;
 
   PROCESS_BEGIN();
 
+  // Iniciando o powertrace
+  powertrace_start(CLOCK_SECOND * 2);
+
+  // Iniciando o serviço de rede
   servreg_hack_init();
 
   ipaddr = set_global_address();
@@ -301,11 +344,25 @@ PROCESS_THREAD(unicast_receiver_process, ev, data)
 
   servreg_hack_register(SERVICE_ID, ipaddr);
 
-  simple_udp_register(&unicast_connection, UDP_PORT, NULL, UDP_PORT, receiver);
+  simple_udp_register(&unicast_connection, UDP_PORT,
+                      NULL, UDP_PORT, receiver);
+
+  // Iniciando o temporizador
+  // etimer_set(&periodic_timer, SEND_INTERVAL);
 
   while(1) {
     PROCESS_WAIT_EVENT();
+    // PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
+
+    // // Copiando os dados do vetor raw_samples para o samples
+    // copy_raw_samples_to_samples();
+
+    // hercules(samples, samples_counter);
+
+    // etimer_reset(&periodic_timer);    
   }
+
+  printf("End of process\n");
   PROCESS_END();
 }
 /*---------------------------------------------------------------------------*/
