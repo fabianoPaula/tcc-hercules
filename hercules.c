@@ -18,135 +18,115 @@
 #define UDP_PORT 1234
 #define SERVICE_ID 190
 
-#define SEND_INTERVAL   (60 * CLOCK_SECOND)
+#define SEND_INTERVAL	(60 * CLOCK_SECOND)
 
-#define NUMBER_OF_SAMPLES 100
-#define NUMBER_OF_BINS 10
-#define NUMBER_OF_INTERVALS 10
+#define NUMBER_OF_SAMPLES 200
+#define NUMBER_OF_BINS 30
+#define NUMBER_OF_INTERVALS 15
 
+#define ROUND_CLOSEST(dividend, divisor) ((dividend + (divisor / 2)) / divisor)
 
-// Funções auxiliares
-void sort_n2(int *data, int datasize) {
-	int i,j, aux; 
+static struct simple_udp_connection hercules_connection;
 
-	for(i = 0; i < datasize - 1; i++){
-		for(j = i; j < datasize; j++){
-			if( data[i] > data[j]){
-				aux = data[i];
-				data[i] = data[j];
-				data[j] = aux;
-			}
+uint16_t locked = 0;
+
+// Definição da curva de frequência
+uint16_t curve_frequency[NUMBER_OF_BINS];
+uint16_t curve_data[NUMBER_OF_BINS];
+
+// Definição da função de média
+uint16_t function_frequency[NUMBER_OF_INTERVALS];
+uint16_t function_data[NUMBER_OF_INTERVALS];
+uint16_t function_status[NUMBER_OF_INTERVALS];
+
+// Definições dos pontos de cisão
+uint16_t split_points[NUMBER_OF_INTERVALS];
+uint16_t split_counter = 0;
+
+uint16_t samples[NUMBER_OF_SAMPLES];
+uint16_t samples_counter = 0;
+
+char message_buffer[100];
+
+uint16_t discrete_mean(uint16_t *y,uint16_t begin,uint16_t end){
+	uint16_t number_of_elements = end - begin, i, aux = 0;
+	
+	if( end <= begin ){
+		return 0;
+	}
+
+	for(i = begin; i < end; i++){
+		aux = aux + ROUND_CLOSEST(y[i],number_of_elements);
+	}
+
+	return aux;
+}
+
+uint16_t weight_mean(uint16_t *x, uint16_t *y, uint16_t begin, uint16_t end){
+	uint16_t sum_mean = 0, total_sample = 0, i;
+
+	if( end <= begin ){
+		return 0;
+	}
+
+	for(i = begin; i < end; i++){
+		sum_mean = sum_mean + x[i]*y[i];
+		total_sample = total_sample + y[i];
+	}
+
+	return ROUND_CLOSEST(sum_mean, total_sample);
+}
+
+uint16_t select_maximun(uint16_t *data, uint16_t datalen, uint16_t value){
+	uint16_t upinterval = 0;
+	
+	while( data[upinterval] < value && upinterval < (datalen - 1)){
+		upinterval = upinterval + 1;
+	}
+	
+	return upinterval;
+}
+
+// Funções auxiliares ao processo principais
+void set_histogram(uint16_t *data, uint16_t data_index){
+	uint16_t index = 0, curve_index = 0;
+	uint16_t min_value = data[0];
+	uint16_t max_value = data[data_index - 1];
+	uint16_t step  = ROUND_CLOSEST((max_value - min_value), NUMBER_OF_BINS);
+	uint16_t step2 = ROUND_CLOSEST(step,2);
+
+	uint16_t sup_data_range = min_value + step;
+   
+	curve_frequency[0] = 0;
+	curve_data[0] = min_value + step2;
+
+	for(index = 0; index < data_index; index++){
+		if( data[index] <= sup_data_range ){
+			curve_frequency[curve_index] = curve_frequency[curve_index] + 1;
+		}else if(curve_index <= NUMBER_OF_BINS - 2 ){ // This is to not write on other vector
+			curve_index = curve_index + 1;
+			curve_frequency[curve_index] = 1;
+			curve_data[curve_index] = sup_data_range + step/2;
+			sup_data_range = sup_data_range + step;
 		}
 	}
 }
 
-int discrete_mean(int *y,int begin,int end){
-	int number_of_elements = end - begin, i, aux = 0;
-    if( number_of_elements == 0){
-        return 0;
-    }
-
-    for(i = begin; i < end; i++){
-    	aux += y[i];
-    }
-
-    return aux/number_of_elements;
-}
-
-int weight_mean(int *x, int *y, int begin, int end){
-	int sum_mean = 0, total_sample = 0, i;
-
-    for(i = begin; i < end; i++){
-    	sum_mean += x[i]*y[i];
-        total_sample += y[i];
-    }
-
-    if (total_sample == 0){
-        return 0;
-    }
-
-    return sum_mean/total_sample/100;
-}
-
-int minvalue(int *data, int data_size){
-    int min_value = data[0];
-    int i;
-
-    for( i = 0; i < data_size; i++){
-    	if( min_value > data[i]){
-    		min_value = data[i];
-    	}
-    }
-
-    return min_value;
-}
-
-int maxvalue(int *data, int data_size){
-    int max_value = data[0];
-    int i;
-
-    for( i = 0; i < data_size; i++){
-    	if( max_value < data[i]){
-    		max_value = data[i];
-    	}
-    }
-
-    return max_value;
-}
-
-// Definição da curva de frequência
-int curve_frequency[NUMBER_OF_BINS];
-int curve_data[NUMBER_OF_BINS];
-
-// Definição da função de média
-int function_frequency[NUMBER_OF_INTERVALS];
-int function_data[NUMBER_OF_INTERVALS];
-int function_status[NUMBER_OF_INTERVALS];
-
-// Definições dos pontos de cisão
-int split_points[NUMBER_OF_INTERVALS];
-int split_counter = 0;
-
-// Funções auxiliares ao processo principais
-
-void set_histogram(int *data, int data_size){
-    int min_value = minvalue(data, data_size);
-    int max_value = maxvalue(data, data_size);
-    int step = (max_value - min_value)/(NUMBER_OF_BINS - 1);
-	
-    int sup_data_range = min_value + step;
-   
-    curve_frequency[0] = 0;
-    curve_data[0] = min_value + step/2;
-
-    int index = 0, curve_index = 0;
-
-    while( index < data_size ){
-    	if( data[index] < sup_data_range ){
-    		curve_frequency[curve_index] += 1;
-    		index += 1;
-    	}else{
-    		curve_frequency[curve_index] = 0;
-    		curve_data[curve_index] = sup_data_range + step/2;
-    		sup_data_range += step;
-    	}
-    }
-}
-
-void set_average_function(int K, int step){
-	int 	k;
+void set_average_function(uint16_t K, uint16_t step){
+	uint16_t k;
 
 	for(k = 0; k < K; k++ ){
 		function_frequency[k] = discrete_mean(curve_frequency, k*step, (k + 1)*step);
 		function_data[k]      = weight_mean(curve_data,curve_frequency,k*step, (k + 1)*step);
 		function_status[k]    = 0;
 	}
+
 }
 
 void classify_points(){
-	int last_valley = 0, index, aux;
-        
-    // Classificando os pontos do meio
+	uint16_t last_valley = 0, index, aux;
+		
+	// Classificando os pontos do meio
 	for(index = 0; index < NUMBER_OF_INTERVALS; index++ ){
 		if( function_frequency[index-1] < function_frequency[index]){
 			if( function_status[index-1] < 1){
@@ -168,13 +148,35 @@ void classify_points(){
 			last_valley = index;
 		}       
 	}
+
 }
 
+// Função processo principal
+void hercules(){
+	uint begin = 0, end, i, j, value;
 
-void select_split_points(){
-	int i, j;
+	// Ordenando vertor de leitura 
+	for(i = 0; i < samples_counter - 1; i++){
+		for(j = i; j < samples_counter; j++){
+			if( samples[i] > samples[j]){
+				value = samples[i];
+				samples[i] = samples[j];
+				samples[j] = value;
+			}
+		}
+	}
 
-    // removendo o vale no extremo direito
+	// Preencher os vetores da curva de frequência
+	set_histogram(samples, samples_counter);
+
+	// Preencher os vetores da função de média
+	set_average_function(NUMBER_OF_INTERVALS, NUMBER_OF_BINS/NUMBER_OF_INTERVALS);
+
+	// Classificar os pontos da função de médias
+	classify_points();
+
+	// selecionar os vales, excluindo os vales do extremo
+	// removendo o vale no extremo direito
 	for(i = 0; i < NUMBER_OF_INTERVALS; i++){
 		if(function_status[i] == 1){
 			for(j = 0; j < i; j++){
@@ -198,85 +200,63 @@ void select_split_points(){
 	// selecionando os vales que foram identificados
 	for(i = 0; i < NUMBER_OF_INTERVALS; i++){
 		if(function_status[i] == -1){
-			split_points[split_counter++] = function_status[i];
+			split_points[split_counter++] = function_data[i];
 		}
 	}
+
+	sprintf(message_buffer, "Message:(");
+	// Gerar as mensagens que serão enviadas para as aplicações
+	for(i = 0; i < split_counter; i++){
+		end = select_maximun(samples, samples_counter, split_points[i]);
+		value = discrete_mean(samples,begin, end);
+
+		printf("Data[%u] = %u\n", i, value);
+		sprintf(message_buffer, "%s%u, %u.%u),(", message_buffer, i, value/100, value % 100);
+		begin = end + 1;
+	}
+
+	value = discrete_mean(samples,begin, samples_counter);
+	sprintf(message_buffer, "%s%u, %u.%u)", message_buffer, i, value/100, value % 100);
+	printf("%s\n", message_buffer);
 }
-
-
-// Função processo principal
-void hercules(int* data, int data_size){
-
-	// Ordenando vertor de leitura 
-	sort_n2(data, data_size);
-
-	// Preencher os vetores da curva de frequência
-	set_histogram(data,data_size);
-
-	// Preencher os vetores da função de média
-	set_average_function(NUMBER_OF_INTERVALS, NUMBER_OF_BINS/NUMBER_OF_INTERVALS);
-
-	// Classificar os pontos da função de médias
-	classify_points();
-
-	// selecionar os vales, excluindo os vales do extremo
-	select_split_points();
-
-	// criar os vetores que serão so subconjuntos unimodais
-
-}
-
-static uint16_t raw_samples[NUMBER_OF_SAMPLES];
-static uint16_t raw_samples_counter = 0;
-
-static uint16_t samples[NUMBER_OF_SAMPLES];
-static uint16_t samples_counter = 0;
-
-void copy_raw_samples_to_samples(){
-  uint16_t i;
-  for(i = 0; i < raw_samples_counter; i++){
-    samples[i] = raw_samples[i];
-  }
-  samples_counter = raw_samples_counter;
-  raw_samples_counter = 0;
-}
-
-static struct simple_udp_connection unicast_connection;
 
 /*---------------------------------------------------------------------------*/
-PROCESS(unicast_receiver_process, "Unicast receiver example process");
+PROCESS(unicast_receiver_process, "Hercules process");
 AUTOSTART_PROCESSES(&unicast_receiver_process);
 /*---------------------------------------------------------------------------*/
 static void
 receiver(struct simple_udp_connection *c,
-         const uip_ipaddr_t *sender_addr,
-         uint16_t sender_port,
-         const uip_ipaddr_t *receiver_addr,
-         uint16_t receiver_port,
-         const uint8_t *data,
-         uint16_t datalen)
+		 const uip_ipaddr_t *sender_addr,
+		 uint16_t sender_port,
+		 const uip_ipaddr_t *receiver_addr,
+		 uint16_t receiver_port,
+		 const uint8_t *data,
+		 uint16_t datalen)
 { 
   uint16_t i, j;
   uint16_t aux;
   // printf("From ");
   // uip_debug_ipaddr_print(sender_addr);
-  // printf(": '%s'\n",data);
+  // printf(": '%s' && locked=%u\n",data,locked);
 
-  raw_samples_counter %= NUMBER_OF_SAMPLES;
-  samples[raw_samples_counter] = 0;
-  for(i = 0; i < (datalen - 1); i++){
-    aux = 1;
-    for(j = 1; j < (datalen - 1 - i); j++) aux *= 10;
+  if( locked == 0){
+  	samples_counter = samples_counter % NUMBER_OF_SAMPLES;
+	samples[samples_counter] = 0;
+	for(i = 0; i < (datalen - 1); i++){
+		aux = 1;
+		for(j = 1; j < (datalen - 1 - i); j++) aux *= 10;
 
-    samples[raw_samples_counter] += (data[i] - '0')*aux;
+		samples[samples_counter] += (data[i] - '0')*aux;
+	}
+	samples_counter = (samples_counter + 1) % NUMBER_OF_SAMPLES;
+
+	// printf("RawSample[%u]: [", samples_counter);
+	// for(i = 0; i < samples_counter; i++){
+	// 	printf("%u, ", samples[i]);  
+	// }
+	// printf("];\n");	
   }
-  raw_samples_counter++;
-
-  // printf("Data[%u]: [", raw_samples_counter);
-  // for(i = 0; i < raw_samples_counter; i++){
-  //   printf("%u, ", samples[i]);  
-  // }
-  // printf("];\n");
+  
 }
 
 /*---------------------------------------------------------------------------*/
@@ -293,12 +273,12 @@ set_global_address(void)
 
   printf("IPv6 addresses: ");
   for(i = 0; i < UIP_DS6_ADDR_NB; i++) {
-    state = uip_ds6_if.addr_list[i].state;
-    if(uip_ds6_if.addr_list[i].isused &&
-       (state == ADDR_TENTATIVE || state == ADDR_PREFERRED)) {
-      uip_debug_ipaddr_print(&uip_ds6_if.addr_list[i].ipaddr);
-      printf("\n");
-    }
+	state = uip_ds6_if.addr_list[i].state;
+	if(uip_ds6_if.addr_list[i].isused &&
+	   (state == ADDR_TENTATIVE || state == ADDR_PREFERRED)) {
+	  uip_debug_ipaddr_print(&uip_ds6_if.addr_list[i].ipaddr);
+	  printf("\n");
+	}
   }
 
   return &ipaddr;
@@ -311,16 +291,16 @@ create_rpl_dag(uip_ipaddr_t *ipaddr)
 
   root_if = uip_ds6_addr_lookup(ipaddr);
   if(root_if != NULL) {
-    rpl_dag_t *dag;
-    uip_ipaddr_t prefix;
-    
-    rpl_set_root(RPL_DEFAULT_INSTANCE, ipaddr);
-    dag = rpl_get_any_dag();
-    uip_ip6addr(&prefix, 0xaaaa, 0, 0, 0, 0, 0, 0, 0);
-    rpl_set_prefix(dag, &prefix, 64);
-    PRINTF("created a new RPL dag\n");
+	rpl_dag_t *dag;
+	uip_ipaddr_t prefix;
+	
+	rpl_set_root(RPL_DEFAULT_INSTANCE, ipaddr);
+	dag = rpl_get_any_dag();
+	uip_ip6addr(&prefix, 0xaaaa, 0, 0, 0, 0, 0, 0, 0);
+	rpl_set_prefix(dag, &prefix, 64);
+	PRINTF("created a new RPL dag\n");
   } else {
-    PRINTF("failed to create a new RPL DAG\n");
+	PRINTF("failed to create a new RPL DAG\n");
   }
 }
 /*---------------------------------------------------------------------------*/
@@ -333,7 +313,7 @@ PROCESS_THREAD(unicast_receiver_process, ev, data)
   PROCESS_BEGIN();
 
   // Iniciando o powertrace
-  powertrace_start(CLOCK_SECOND * 2);
+  powertrace_start(CLOCK_SECOND * SEND_INTERVAL);
 
   // Iniciando o serviço de rede
   servreg_hack_init();
@@ -344,22 +324,24 @@ PROCESS_THREAD(unicast_receiver_process, ev, data)
 
   servreg_hack_register(SERVICE_ID, ipaddr);
 
-  simple_udp_register(&unicast_connection, UDP_PORT,
-                      NULL, UDP_PORT, receiver);
+  simple_udp_register(&hercules_connection, UDP_PORT,NULL, UDP_PORT, receiver);
 
   // Iniciando o temporizador
-  // etimer_set(&periodic_timer, SEND_INTERVAL);
+  etimer_set(&periodic_timer, SEND_INTERVAL);
 
   while(1) {
-    PROCESS_WAIT_EVENT();
-    // PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
+	// PROCESS_WAIT_EVENT();
+	PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
 
-    // // Copiando os dados do vetor raw_samples para o samples
-    // copy_raw_samples_to_samples();
+	printf("Open fusion window\n");
+	locked = 1;
 
-    // hercules(samples, samples_counter);
+	hercules();
 
-    // etimer_reset(&periodic_timer);    
+	locked = 0;
+	printf("Close fusion window\n");
+
+	etimer_reset(&periodic_timer);    
   }
 
   printf("End of process\n");
