@@ -204,7 +204,7 @@ void hercules(){
 		}
 	}
 
-	sprintf(message_buffer, "Message:(");
+	sprintf(message_buffer, "Hercules:(");
 	// Gerar as mensagens que serão enviadas para as aplicações
 	for(i = 0; i < split_counter; i++){
 		end = select_maximun(samples, samples_counter, split_points[i]);
