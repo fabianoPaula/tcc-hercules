@@ -329,17 +329,20 @@ PROCESS_THREAD(unicast_receiver_process, ev, data)
   // Iniciando o temporizador
   etimer_set(&periodic_timer, SEND_INTERVAL);
 
+  printf("Open collector window\n");
   while(1) {
 	// PROCESS_WAIT_EVENT();
 	PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
 
+	printf("Close collector window\n");
 	printf("Open fusion window\n");
 	locked = 1;
 
 	hercules();
 
-	locked = 0;
 	printf("Close fusion window\n");
+	locked = 0;
+	printf("Open collector window\n");
 
 	etimer_reset(&periodic_timer);    
   }
