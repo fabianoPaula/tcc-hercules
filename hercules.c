@@ -19,6 +19,7 @@
 #define SERVICE_ID 190
 
 #define SEND_INTERVAL	(60 * CLOCK_SECOND)
+#define POWERTRACE_INTERVAL (2 * CLOCK_SECOND)
 
 #define NUMBER_OF_SAMPLES 200
 #define NUMBER_OF_BINS 30
@@ -313,7 +314,7 @@ PROCESS_THREAD(unicast_receiver_process, ev, data)
   PROCESS_BEGIN();
 
   // Iniciando o powertrace
-  powertrace_start(CLOCK_SECOND * SEND_INTERVAL);
+  powertrace_start(POWERTRACE_INTERVAL);
 
   // Iniciando o serviço de rede
   servreg_hack_init();
