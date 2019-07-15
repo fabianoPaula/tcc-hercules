@@ -149,6 +149,7 @@ void classify_points(){
 			last_valley = index;
 		}       
 	}
+	function_status[NUMBER_OF_INTERVALS - 1] = 0;
 
 }
 
@@ -177,26 +178,6 @@ void hercules(){
 	classify_points();
 
 	// selecionar os vales, excluindo os vales do extremo
-	// removendo o vale no extremo direito
-	for(i = 0; i < NUMBER_OF_INTERVALS; i++){
-		if(function_status[i] == 1){
-			for(j = 0; j < i; j++){
-				function_status[j] = 0;
-			}
-			break;
-		}
-	}
-
-	// removendo o vale no extremo esquerdo
-	for(i = NUMBER_OF_INTERVALS; i > 0; i--){
-		if(function_status[i] == 1){
-			for(j = i; j < NUMBER_OF_INTERVALS; j++){
-				function_status[j] = 0;
-			}
-			break;
-		}
-	}
-
 	split_counter = 0;
 	// selecionando os vales que foram identificados
 	for(i = 0; i < NUMBER_OF_INTERVALS; i++){
@@ -205,7 +186,7 @@ void hercules(){
 		}
 	}
 
-	sprintf(message_buffer, "Hercules:(");
+	sprintf(message_buffer, "H:(");
 	// Gerar as mensagens que serão enviadas para as aplicações
 	for(i = 0; i < split_counter; i++){
 		end = select_maximun(samples, samples_counter, split_points[i]);
