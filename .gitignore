@@ -27,6 +27,7 @@ obj_native
 // Project 
 
 collect_*
+build/
 
 
 
