@@ -27,6 +27,8 @@ obj_native
 // Project 
 
 collect_*
+symbols.c
+symbols.h
 build/
 
 
