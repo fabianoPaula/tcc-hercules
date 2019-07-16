@@ -215,28 +215,36 @@ receiver(struct simple_udp_connection *c,
 		 const uint8_t *data,
 		 uint16_t datalen)
 { 
-  uint16_t i, j;
-  uint16_t aux;
-  // printf("From ");
-  // uip_debug_ipaddr_print(sender_addr);
-  // printf(": '%s' && locked=%u\n",data,locked);
+  uint16_t i, j, k;
+  uint16_t aux, localnumbersamples, pointer;
 
   if( locked == 0){
-  	samples_counter = samples_counter % NUMBER_OF_SAMPLES;
-	samples[samples_counter] = 0;
-	for(i = 0; i < (datalen - 1); i++){
-		aux = 1;
-		for(j = 1; j < (datalen - 1 - i); j++) aux *= 10;
+  	if( data[0] == 'c'){
+  		for(i = 2; data[i] != ':'; i++);
 
-		samples[samples_counter] += (data[i] - '0')*aux;
+  		localnumbersamples = 0;
+  		for(j = 2; j < i; j++){
+			aux = 1;
+			for(k = 1; k < (i - 1 - j); k++) aux *= 10;
+			localnumbersamples += (data[j] - '0')*aux;
+		}
+
+		for(; localnumbersamples > 0; localnumbersamples--){
+		  	samples_counter = samples_counter % NUMBER_OF_SAMPLES;
+			samples[samples_counter] = 0;
+			pointer = ++i;
+			for(; data[i] != ',' && i < datalen; i++);
+			printf("%d - %d - %d \n", pointer, i, datalen);
+			for(j = pointer; j < i; j++){
+				aux = 1;
+				for(k = j; k < (i - 1); k++) aux *= 10;
+				printf("%d - %c\n", aux, data[j]);
+
+				samples[samples_counter] += (data[j] - '0')*aux;
+			}
+			samples_counter = (samples_counter + 1) % NUMBER_OF_SAMPLES;
+		}
 	}
-	samples_counter = (samples_counter + 1) % NUMBER_OF_SAMPLES;
-
-	// printf("RawSample[%u]: [", samples_counter);
-	// for(i = 0; i < samples_counter; i++){
-	// 	printf("%u, ", samples[i]);  
-	// }
-	// printf("];\n");	
   }
   
 }
