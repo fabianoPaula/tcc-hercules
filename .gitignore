@@ -26,6 +26,7 @@ obj_native
 
 // Project 
 
+a.out
 collect_*
 symbols.c
 symbols.h
