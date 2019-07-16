@@ -1,0 +1,14 @@
+#!/bin/sh
+
+mkdir -p build
+
+PATH_PWD=$(pwd)
+echo $PATH_PWD
+
+make TARGET=z1 hercules.ramprof > $PATH_PWD/build/ramprof.txt
+sed -i '1d' ramprof.txt >> /dev/null
+
+make TARGET=z1 hercules.flashprof > $PATH_PWD/build/flashprof.txt
+sed -i '1d' flashprof.txt >> /dev/null
+
+python $PATH_PWD/pythonScripts/sumMemoryUsage.py $PATH_PWD/build/ramprof.txt $PATH_PWD/build/flashprof.txt
