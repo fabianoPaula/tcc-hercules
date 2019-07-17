@@ -23,8 +23,6 @@
 
 #define NUMBER_OF_SAMPLES 200
 
-#define PERCENTIL(array, size, p) (array[p*size/100])
-
 // static struct simple_udp_connection hepheastus_connection;
 
 uint16_t locked = 0;
@@ -241,148 +239,139 @@ void hepheastus_main(){
 PROCESS(unicast_receiver_process, "Hepheastus process");
 AUTOSTART_PROCESSES(&unicast_receiver_process);
 /*---------------------------------------------------------------------------*/
-// static void
-// receiver(struct simple_udp_connection *c,
-// 		 const uip_ipaddr_t *sender_addr,
-// 		 uint16_t sender_port,
-// 		 const uip_ipaddr_t *receiver_addr,
-// 		 uint16_t receiver_port,
-// 		 const uint8_t *data,
-// 		 uint16_t datalen)
-// { 
-//   uint16_t i, j;
-//   uint16_t aux;
-//   // printf("From ");
-//   // uip_debug_ipaddr_print(sender_addr);
-//   // printf(": '%s' && locked=%u\n",data,locked);
+static void
+receiver(struct simple_udp_connection *c,
+		 const uip_ipaddr_t *sender_addr,
+		 uint16_t sender_port,
+		 const uip_ipaddr_t *receiver_addr,
+		 uint16_t receiver_port,
+		 const uint8_t *data,
+		 uint16_t datalen)
+{ 
+  uint16_t i, j, k;
+  uint16_t aux, localnumbersamples, pointer;
 
-//   if( locked == 0){
-//   	samples_counter = samples_counter % NUMBER_OF_SAMPLES;
-// 	samples[samples_counter] = 0;
-// 	for(i = 0; i < (datalen - 1); i++){
-// 		aux = 1;
-// 		for(j = 1; j < (datalen - 1 - i); j++) aux *= 10;
+  if( locked == 0){
+  	if( data[0] == 'c'){
+  		for(i = 2; data[i] != ':'; i++);
 
-// 		samples[samples_counter] += (data[i] - '0')*aux;
-// 	}
-// 	samples_counter = (samples_counter + 1) % NUMBER_OF_SAMPLES;
+  		localnumbersamples = 0;
+  		for(j = 2; j < i; j++){
+			aux = 1;
+			for(k = 1; k < (i - 1 - j); k++) aux *= 10;
+			localnumbersamples += (data[j] - '0')*aux;
+		}
 
-// 	// printf("RawSample[%u]: [", samples_counter);
-// 	// for(i = 0; i < samples_counter; i++){
-// 	// 	printf("%u, ", samples[i]);  
-// 	// }
-// 	// printf("];\n");	
-//   }
+		for(; localnumbersamples > 0; localnumbersamples--){
+		  	samples_counter = samples_counter % NUMBER_OF_SAMPLES;
+			samples[samples_counter] = 0;
+			pointer = ++i;
+			for(; data[i] != ',' && i < datalen; i++);
+			printf("%d - %d - %d \n", pointer, i, datalen);
+			for(j = pointer; j < i; j++){
+				aux = 1;
+				for(k = j; k < (i - 1); k++) aux *= 10.0;
+				printf("%d - %c\n", aux, data[j]);
+
+				samples[samples_counter] += (data[j] - '0')*aux;
+			}
+			samples[samples_counter] = samples[samples_counter]/100;
+			samples_counter = (samples_counter + 1) % NUMBER_OF_SAMPLES;
+		}
+	}
+  }
   
-// }
+}
 
-// // /*---------------------------------------------------------------------------*/
-// static uip_ipaddr_t *
-// set_global_address(void)
-// {
-//   static uip_ipaddr_t ipaddr;
-//   int i;
-//   uint8_t state;
-
-//   uip_ip6addr(&ipaddr, 0xaaaa, 0, 0, 0, 0, 0, 0, 0);
-//   uip_ds6_set_addr_iid(&ipaddr, &uip_lladdr);
-//   uip_ds6_addr_add(&ipaddr, 0, ADDR_AUTOCONF);
-
-//   printf("IPv6 addresses: ");
-//   for(i = 0; i < UIP_DS6_ADDR_NB; i++) {
-// 	state = uip_ds6_if.addr_list[i].state;
-// 	if(uip_ds6_if.addr_list[i].isused &&
-// 	   (state == ADDR_TENTATIVE || state == ADDR_PREFERRED)) {
-// 	  uip_debug_ipaddr_print(&uip_ds6_if.addr_list[i].ipaddr);
-// 	  printf("\n");
-// 	}
-//   }
-
-//   return &ipaddr;
-// }
 // /*---------------------------------------------------------------------------*/
-// static void
-// create_rpl_dag(uip_ipaddr_t *ipaddr)
-// {
-//   struct uip_ds6_addr *root_if;
+static uip_ipaddr_t *
+set_global_address(void)
+{
+  static uip_ipaddr_t ipaddr;
+  int i;
+  uint8_t state;
 
-//   root_if = uip_ds6_addr_lookup(ipaddr);
-//   if(root_if != NULL) {
-// 	rpl_dag_t *dag;
-// 	uip_ipaddr_t prefix;
+  uip_ip6addr(&ipaddr, 0xaaaa, 0, 0, 0, 0, 0, 0, 0);
+  uip_ds6_set_addr_iid(&ipaddr, &uip_lladdr);
+  uip_ds6_addr_add(&ipaddr, 0, ADDR_AUTOCONF);
+
+  printf("IPv6 addresses: ");
+  for(i = 0; i < UIP_DS6_ADDR_NB; i++) {
+	state = uip_ds6_if.addr_list[i].state;
+	if(uip_ds6_if.addr_list[i].isused &&
+	   (state == ADDR_TENTATIVE || state == ADDR_PREFERRED)) {
+	  uip_debug_ipaddr_print(&uip_ds6_if.addr_list[i].ipaddr);
+	  printf("\n");
+	}
+  }
+
+  return &ipaddr;
+}
+/*---------------------------------------------------------------------------*/
+static void
+create_rpl_dag(uip_ipaddr_t *ipaddr)
+{
+  struct uip_ds6_addr *root_if;
+
+  root_if = uip_ds6_addr_lookup(ipaddr);
+  if(root_if != NULL) {
+	rpl_dag_t *dag;
+	uip_ipaddr_t prefix;
 	
-// 	rpl_set_root(RPL_DEFAULT_INSTANCE, ipaddr);
-// 	dag = rpl_get_any_dag();
-// 	uip_ip6addr(&prefix, 0xaaaa, 0, 0, 0, 0, 0, 0, 0);
-// 	rpl_set_prefix(dag, &prefix, 64);
-// 	PRINTF("created a new RPL dag\n");
-//   } else {
-// 	PRINTF("failed to create a new RPL DAG\n");
-//   }
-// }
+	rpl_set_root(RPL_DEFAULT_INSTANCE, ipaddr);
+	dag = rpl_get_any_dag();
+	uip_ip6addr(&prefix, 0xaaaa, 0, 0, 0, 0, 0, 0, 0);
+	rpl_set_prefix(dag, &prefix, 64);
+	PRINTF("created a new RPL dag\n");
+  } else {
+	PRINTF("failed to create a new RPL DAG\n");
+  }
+}
 /*---------------------------------------------------------------------------*/
 PROCESS_THREAD(unicast_receiver_process, ev, data)
 {
-  // static struct etimer periodic_timer;
-  // static struct etimer send_timer;
-  // uip_ipaddr_t *ipaddr;
+  static struct etimer periodic_timer;
+  static struct etimer send_timer;
+  uip_ipaddr_t *ipaddr;
 
   PROCESS_BEGIN();
 
-  // float number10 = mysqrt(2.0);
-
   // Iniciando o powertrace
-  //powertrace_start(POWERTRACE_INTERVAL);
-
-  float data[8] = {1.0,1.0,1.0,1.0,2.0,2.0,2.0,2.0};
-  float mean_value = mean(data, 0, 8);
-  float sd_value = standard_desviation(data, 0, 8);
-  float skew_value = skew(data, 0, 8);
-  float kurtosis_value = kurtosis(data, 0, 8);
-
-  printf("mean=");
-  printf_float(mean_value);
-  printf(", sd=");
-  printf_float(sd_value);
-  printf(", skew=");
-  printf_float(skew_value);
-  printf(", kurtosis=");
-  printf_float(kurtosis_value);
-  printf("\n");
+  powertrace_start(POWERTRACE_INTERVAL);
 
   // Iniciando o serviço de rede
- //  servreg_hack_init();
+  servreg_hack_init();
 
- //  ipaddr = set_global_address();
+  ipaddr = set_global_address();
 
- //  create_rpl_dag(ipaddr);
+  create_rpl_dag(ipaddr);
 
- //  servreg_hack_register(SERVICE_ID, ipaddr);
+  servreg_hack_register(SERVICE_ID, ipaddr);
 
- //  simple_udp_register(&hepheastus_connection, UDP_PORT,NULL, UDP_PORT, receiver);
+  simple_udp_register(&hepheastus_connection, UDP_PORT,NULL, UDP_PORT, receiver);
 
- //  // Iniciando o temporizador
- //  etimer_set(&periodic_timer, SEND_INTERVAL);
+  // Iniciando o temporizador
+  etimer_set(&periodic_timer, SEND_INTERVAL);
 
- //  printf("RTIMER_SECOND %u\n", RTIMER_SECOND);
+  printf("RTIMER_SECOND %u\n", RTIMER_SECOND);
 
- //  printf("Open collector window\n");
- //  while(1) {
-	// // PROCESS_WAIT_EVENT();
-	// PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
+  printf("Open collector window\n");
+  while(1) {
+	// PROCESS_WAIT_EVENT();
+	PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
 
-	// printf("Close collector window\n");
-	// printf("Open fusion window\n");
-	// locked = 1;
+	printf("Close collector window\n");
+	printf("Open fusion window\n");
+	locked = 1;
 
-	// hepheastus_main();
+	hepheastus_main();
 
-	// printf("Close fusion window\n");
-	// locked = 0;
-	// printf("Open collector window\n");
+	printf("Close fusion window\n");
+	locked = 0;
+	printf("Open collector window\n");
 
-	// etimer_reset(&periodic_timer);    
- //  }
+	etimer_reset(&periodic_timer);    
+  }
 
   printf("End of process\n");
   PROCESS_END();
