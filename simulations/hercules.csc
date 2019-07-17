@@ -378,7 +378,7 @@
   <plugin>
     se.sics.cooja.plugins.SimControl
     <width>280</width>
-    <z>3</z>
+    <z>2</z>
     <height>160</height>
     <location_x>400</location_x>
     <location_y>0</location_y>
@@ -396,7 +396,7 @@
       <viewport>2.4472209235949105 0.0 0.0 2.4472209235949105 119.58337229215267 -14.272727272727213</viewport>
     </plugin_config>
     <width>400</width>
-    <z>4</z>
+    <z>3</z>
     <height>400</height>
     <location_x>1</location_x>
     <location_y>1</location_y>
@@ -409,7 +409,7 @@
       <coloring />
     </plugin_config>
     <width>966</width>
-    <z>2</z>
+    <z>1</z>
     <height>240</height>
     <location_x>400</location_x>
     <location_y>160</location_y>
@@ -445,7 +445,7 @@
       <zoomfactor>500.0</zoomfactor>
     </plugin_config>
     <width>1366</width>
-    <z>1</z>
+    <z>0</z>
     <height>265</height>
     <location_x>0</location_x>
     <location_y>403</location_y>
@@ -457,49 +457,10 @@
       <decorations>true</decorations>
     </plugin_config>
     <width>686</width>
-    <z>5</z>
+    <z>4</z>
     <height>160</height>
     <location_x>680</location_x>
     <location_y>0</location_y>
-  </plugin>
-  <plugin>
-    se.sics.cooja.plugins.ScriptRunner
-    <plugin_config>
-      <script>/*&#xD;
- * Example Contiki test script (JavaScript).&#xD;
- * A Contiki test script acts on mote output, such as via printf()'s.&#xD;
- * The script may operate on the following variables:&#xD;
- *  Mote mote, int id, String msg&#xD;
- */&#xD;
-&#xD;
-/* Make test automatically fail (timeout) after 100 simulated seconds */&#xD;
-//TIMEOUT(100000); /* milliseconds. no action at timeout */&#xD;
-TIMEOUT(100000, log.log("last msg: " + msg + "\n")); /* milliseconds. print last msg at timeout */&#xD;
-&#xD;
-log.log("first mote output: '" + msg + "'\n");&#xD;
-&#xD;
-YIELD(); /* wait for another mote output */&#xD;
-&#xD;
-log.log("second mote output: '" + msg + "'\n");&#xD;
-&#xD;
-log.log("waiting for hello world output from mote 1\n");&#xD;
-WAIT_UNTIL(id == 1 &amp;&amp; msg.equals("Hello, world"));&#xD;
-&#xD;
-write(mote, "Hello, mote\n"); /* Write to mote serial port */&#xD;
-&#xD;
-GENERATE_MSG(15000, "continue");&#xD;
-YIELD_THEN_WAIT_UNTIL(msg.equals("continue"));&#xD;
-&#xD;
-log.log("ok, reporting success now\n");&#xD;
-log.testOK(); /* Report test success and quit */&#xD;
-//log.testFailed(); /* Report test failure and quit */</script>
-      <active>false</active>
-    </plugin_config>
-    <width>600</width>
-    <z>0</z>
-    <height>668</height>
-    <location_x>150</location_x>
-    <location_y>150</location_y>
   </plugin>
 </simconf>
 
