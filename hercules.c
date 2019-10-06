@@ -129,12 +129,9 @@ void classify_points(){
 		
 	// Classificando os pontos do meio
 	for(index = 0; index < NUMBER_OF_INTERVALS; index++ ){
-		if( function_frequency[index-1] < function_frequency[index]){
+		if( function_frequency[index-1] <= function_frequency[index]){
 			if( function_status[index-1] < 1){
 				function_status[index] = 1;
-				function_status[last_valley] = 0;
-				aux = last_valley + (index - last_valley)/2;
-				function_status[aux] = -1;
 			}else if( function_status[index-1] == 1){
 				function_status[index-1] = 0;
 				function_status[index] = 1;
@@ -146,7 +143,6 @@ void classify_points(){
 				function_status[index-1] = 0;
 				function_status[index] = -1;
 			}
-			last_valley = index;
 		}       
 	}
 	function_status[NUMBER_OF_INTERVALS - 1] = 0;
