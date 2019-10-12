@@ -133,7 +133,6 @@ void hepheastus(uint16_t begin, uint16_t end, uint16_t level){
 		split_points[split_counter++] = mean_value;
 
 		upper = begin;
-
 		for(; samples[upper] < mean_value && upper < (end - 1); upper++);
 
 		hepheastus(begin, upper, level + 1);

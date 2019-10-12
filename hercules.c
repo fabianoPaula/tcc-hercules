@@ -187,7 +187,7 @@ void hercules(){
 		end = select_maximun(samples, samples_counter, split_points[i]);
 		value = discrete_mean(samples,begin, end);
 
-		printf("Data[%u] = %u\n", i, value);
+		// printf("Data[%u] = %u\n", i, value);
 		sprintf(message_buffer, "%s%u, %u.%u),(", message_buffer, i, value/100, value % 100);
 		begin = end + 1;
 	}
