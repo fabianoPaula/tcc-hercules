@@ -136,7 +136,7 @@ void classify_points(){
 				function_status[index-1] = 0;
 				function_status[index] = 1;
 			}
-		} else if( function_frequency[index-1] > function_frequency[index]){
+		} else {
 			if( function_status[index-1] > -1 ){
 				function_status[index] = -1;
 			}else if( function_status[index-1] == -1){
@@ -145,8 +145,7 @@ void classify_points(){
 			}
 		}       
 	}
-	function_status[NUMBER_OF_INTERVALS - 1] = 0;
-
+  function_status[NUMBER_OF_INTERVALS - 1] = 0;
 }
 
 // Função processo principal
