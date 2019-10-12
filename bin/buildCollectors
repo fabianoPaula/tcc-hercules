@@ -1,7 +1,0 @@
-#!/bin/sh
-
-PATH_PWD=$(pwd)
-echo $PATH_PWD
-
-python $PATH_PWD/pythonScripts/makeCollectors.py 50 4  200 > $PATH_PWD/collect_OLPM.c
-python $PATH_PWD/pythonScripts/makeCollectors.py 92 18 200 > $PATH_PWD/collect_battery.c

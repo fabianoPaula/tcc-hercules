@@ -8,7 +8,7 @@
 
 #include "simple-udp.h"
 #include "servreg-hack.h"
-#include "powertrace.h"
+// #include "powertrace.h"
 
 #include "net/rpl/rpl.h"
 
@@ -18,7 +18,7 @@
 #define UDP_PORT 1234
 #define SERVICE_ID 190
 
-#define SEND_INTERVAL	(60 * CLOCK_SECOND)
+#define SEND_INTERVAL	(10 * CLOCK_SECOND)
 #define POWERTRACE_INTERVAL (2 * CLOCK_SECOND)
 
 #define NUMBER_OF_SAMPLES 200
@@ -125,7 +125,7 @@ void set_average_function(uint16_t K, uint16_t step){
 }
 
 void classify_points(){
-	uint16_t last_valley = 0, index, aux;
+	uint16_t index;
 		
 	// Classificando os pontos do meio
 	for(index = 0; index < NUMBER_OF_INTERVALS; index++ ){
@@ -145,7 +145,7 @@ void classify_points(){
 			}
 		}       
 	}
-  function_status[NUMBER_OF_INTERVALS - 1] = 0;
+	function_status[NUMBER_OF_INTERVALS - 1] = 0;
 }
 
 // Função processo principal
@@ -292,13 +292,12 @@ create_rpl_dag(uip_ipaddr_t *ipaddr)
 PROCESS_THREAD(unicast_receiver_process, ev, data)
 {
   static struct etimer periodic_timer;
-  static struct etimer send_timer;
   uip_ipaddr_t *ipaddr;
 
   PROCESS_BEGIN();
 
   // Iniciando o powertrace
-  powertrace_start(POWERTRACE_INTERVAL);
+  // powertrace_start(POWERTRACE_INTERVAL);
 
   // Iniciando o serviço de rede
   servreg_hack_init();
