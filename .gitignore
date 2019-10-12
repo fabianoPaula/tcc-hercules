@@ -41,3 +41,6 @@ build/
 flashprof.txt
 ramprof.txt
 
+notebooks/GenerateData/.ipynb_checkpoints/
+notebooks/TesteDeAcuracia/.ipynb_checkpoints/
+notebooks/TesteDeAcuracia/datasets/
