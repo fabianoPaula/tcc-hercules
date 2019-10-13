@@ -227,45 +227,36 @@ static uint16_t strtoint(const uint8_t *data, uint16_t begin, uint16_t end){
 	return result;
 }
 
+void static read_message(const uint8_t *data, uint16_t datalen){
+	uint16_t i, localnumbersamples, pointer;
+
+	for(i = 2; data[i] != ':'; i++);
+	localnumbersamples = strtoint(data,2, i);
+	// printf("Number: %u\n",localnumbersamples);
+
+	for(; localnumbersamples > 0; localnumbersamples--){
+		pointer = i + 1;
+		for(; data[i] != ',' && i < (datalen - 1); i++);
+		samples[samples_counter] = strtoint(data,pointer, i);
+		printf("Received %u\n",samples[samples_counter]);
+		samples_counter = (samples_counter + 1) % NUMBER_OF_SAMPLES;
+	}
+}
+
 /*---------------------------------------------------------------------------*/
 PROCESS(unicast_receiver_process, "Hercules process");
 AUTOSTART_PROCESSES(&unicast_receiver_process);
 /*---------------------------------------------------------------------------*/
-static void
-receiver(struct simple_udp_connection *c,
-		 const uip_ipaddr_t *sender_addr,
-		 uint16_t sender_port,
-		 const uip_ipaddr_t *receiver_addr,
-		 uint16_t receiver_port,
-		 const uint8_t *data,
-		 uint16_t datalen)
-{ 
-  uint16_t i, localnumbersamples, pointer;
-
-  if( locked == 0){
-  	if( data[0] == 'c'){
-  		// printf("%s\n", data);
-  		for(i = 2; data[i] != ':'; i++);
-
-  		localnumbersamples = strtoint(data,2, i);
-		// printf("Number: %u\n",localnumbersamples);
-
-		for(; localnumbersamples > 0; localnumbersamples--){
-			pointer = i + 1;
-			for(; data[i] != ',' && i < (datalen - 1); i++);
-			samples[samples_counter] = strtoint(data,pointer, i);
-			printf("Received %u\n",samples[samples_counter]);
-			samples_counter = (samples_counter + 1) % NUMBER_OF_SAMPLES;
-		}
-	}
-  }
-  
+static void receiver(struct simple_udp_connection *c,
+		const uip_ipaddr_t *sender_addr,   uint16_t sender_port,
+		const uip_ipaddr_t *receiver_addr, uint16_t receiver_port,
+		const uint8_t      *data,          uint16_t datalen){
+  	if( locked == 0 && data[0] == 'c')
+  		read_message(data,datalen);
 }
 
 /*---------------------------------------------------------------------------*/
-static uip_ipaddr_t *
-set_global_address(void)
-{
+static uip_ipaddr_t * set_global_address(void){
   static uip_ipaddr_t ipaddr;
   int i;
   uint8_t state;
@@ -287,9 +278,7 @@ set_global_address(void)
   return &ipaddr;
 }
 /*---------------------------------------------------------------------------*/
-static void
-create_rpl_dag(uip_ipaddr_t *ipaddr)
-{
+static void create_rpl_dag(uip_ipaddr_t *ipaddr){
   struct uip_ds6_addr *root_if;
 
   root_if = uip_ds6_addr_lookup(ipaddr);
@@ -306,37 +295,9 @@ create_rpl_dag(uip_ipaddr_t *ipaddr)
 	PRINTF("failed to create a new RPL DAG\n");
   }
 }
+
 /*---------------------------------------------------------------------------*/
-PROCESS_THREAD(unicast_receiver_process, ev, data)
-{
-  static struct etimer collect_timer;
-  uip_ipaddr_t *ipaddr;
-
-  PROCESS_BEGIN();
-
-  // Iniciando o temporizador
-  etimer_set(&collect_timer, COLLECT_INTERVAL);
-
-  while(1) {
-	// PROCESS_WAIT_EVENT();
-	PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&collect_timer));
-
-	printf("Collecting data\n");
-	locked = 1;
-
-	hercules();
-
-	printf("Finishing data collection\n");
-	locked = 0;
-	
-
-	etimer_reset(&collect_timer);    
-  }
-  PROCESS_END();
-}
-/*---------------------------------------------------------------------------*/
-PROCESS_THREAD(unicast_receiver_process, ev, data)
-{
+PROCESS_THREAD(unicast_receiver_process, ev, data){
   static struct etimer periodic_timer;
   uip_ipaddr_t *ipaddr;
 
@@ -347,15 +308,10 @@ PROCESS_THREAD(unicast_receiver_process, ev, data)
 
   // Iniciando o serviço de rede
   servreg_hack_init();
-
   ipaddr = set_global_address();
-
   create_rpl_dag(ipaddr);
-
   servreg_hack_register(SERVICE_ID, ipaddr);
-
   simple_udp_register(&hercules_connection, UDP_PORT,NULL, UDP_PORT, receiver);
-
   // Iniciando o temporizador
   etimer_set(&periodic_timer, SEND_INTERVAL);
 
