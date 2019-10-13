@@ -1,5 +1,5 @@
 CONTIKI_PROJECT = hercules
-all: $(CONTIKI_PROJECT) hepheastus collect_battery collect_OLPM
+all: $(CONTIKI_PROJECT) hepheastus dataset-1-C1-101
 APPS+=servreg-hack
 APPS+=powertrace
 CONTIKI = ../..

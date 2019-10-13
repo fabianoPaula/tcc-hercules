@@ -116,8 +116,22 @@ void skew_mean(float *x, uint16_t begin, uint16_t end, float *mean, float *skew)
 }
 
 void hepheastus(uint16_t begin, uint16_t end, uint16_t level){
-	uint16_t upper;
+	uint16_t i, j, value, number_of_elements, upper;
 	float skew_value, kurtosis_value, mean_value;
+
+	if( level == 0){
+		// Ordenando vertor de leitura 
+		for(i = 0; i < samples_counter - 1; i++){
+			for(j = i; j < samples_counter; j++){
+				if( samples[i] > samples[j]){
+					value = samples[i];
+					samples[i] = samples[j];
+					samples[j] = value;
+				}
+			}
+		}
+		split_counter = 0;
+	}
 
 	skew_mean(samples, begin, end, &mean_value, &skew_value);
 	kurtosis_value = kurtosis(samples, begin, end);
@@ -137,6 +151,39 @@ void hepheastus(uint16_t begin, uint16_t end, uint16_t level){
 
 		hepheastus(begin, upper, level + 1);
 		hepheastus(upper,   end, level + 1);
+	}
+
+	if( level == 0){
+		begin = 0;
+		sprintf(message_buffer, "He:(");
+		// Gerar as mensagens que serão enviadas para as aplicações
+		for(i = 0; i < split_counter; i++){
+			end = begin;
+			for(; samples[end] < split_points[i] && end < (samples_counter - 1); end++);
+
+			value = 0;
+			number_of_elements = end - begin;
+
+			for(i = begin; i < end; i++)
+				value = value + samples[i]/number_of_elements;
+
+			// printf("Data[%u] = %u\n", i, value);
+			sprintf(message_buffer,"%s%u, %ld.%02u),(", message_buffer,  i,
+				(long) value, (unsigned)((value-myfloor(value))*100)
+			);
+			begin = end + 1;
+		}
+
+		value = 0;
+		number_of_elements = samples_counter - begin;
+
+		for(i = begin; i < samples_counter; i++)
+			value = value + samples[i]/number_of_elements;
+		
+		sprintf(message_buffer,"%s%u, %ld.%02u)", message_buffer, i, 
+			(long) value, (unsigned)((value-myfloor(value))*100)
+		);
+		printf("%s\n", message_buffer);	
 	}
 }
 
@@ -238,8 +285,6 @@ PROCESS_THREAD(unicast_receiver_process, ev, data)
 
   PROCESS_BEGIN();
 
-  uint begin, end, i, j, value, number_of_elements;
-
   // Iniciando o powertrace
   // powertrace_start(POWERTRACE_INTERVAL);
 
@@ -268,60 +313,7 @@ PROCESS_THREAD(unicast_receiver_process, ev, data)
 	printf("Open fusion window\n");
 	locked = 1;
 
-	// Ordenando vertor de leitura 
-	for(i = 0; i < samples_counter - 1; i++){
-		for(j = i; j < samples_counter; j++){
-			if( samples[i] > samples[j]){
-				value = samples[i];
-				samples[i] = samples[j];
-				samples[j] = value;
-			}
-		}
-	}
-	split_counter = 0;
-	
 	hepheastus(0, samples_counter, 0);
-
-	begin = 0;
-	sprintf(message_buffer, "H:(");
-	// Gerar as mensagens que serão enviadas para as aplicações
-	for(i = 0; i < split_counter; i++){
-		end = begin;
-		for(; samples[end] < split_points[i] && end < (samples_counter - 1); end++);
-
-		value = 0;
-		number_of_elements = end - begin;
-
-		for(i = begin; i < end; i++)
-			value = value + samples[i]/number_of_elements;
-
-		printf("Data[%u] = %u\n", i, value);
-		sprintf(
-			message_buffer, 
-			"%s%u, %ld.%02u),(", 
-			message_buffer, 
-			i,
-			(long) value, 
-			(unsigned)((value-myfloor(value))*100)
-		);
-		begin = end + 1;
-	}
-
-	value = 0;
-	number_of_elements = samples_counter - begin;
-
-	for(i = begin; i < samples_counter; i++)
-		value = value + samples[i]/number_of_elements;
-	
-	sprintf(
-		message_buffer,
-		"%s%u, %ld.%02u)",
-		message_buffer,
-		i, 
-		(long) value, 
-		(unsigned)((value-myfloor(value))*100)
-	);
-	printf("%s\n", message_buffer);	
 
 	printf("Close fusion window\n");
 	locked = 0;
