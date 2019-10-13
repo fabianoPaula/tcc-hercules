@@ -7,7 +7,6 @@
 #include "net/uip-debug.h"
 #include "sys/node-id.h"
 #include "simple-udp.h"
-#include "powertrace.h"
 #include "servreg-hack.h"
 #include <stdio.h>
 #include <string.h>
@@ -15,7 +14,6 @@
 #define SERVICE_ID 190
 #define SEND_INTERVAL    (5 * CLOCK_SECOND)
 #define SEND_TIME    (random_rand() % (SEND_INTERVAL))
-#define POWERTRACE_INTERVAL  (2 * CLOCK_SECOND)
 #define DATA_SIZE 100
 int samples[100] = {
 8378, 8474, 8363, 8685, 8131, 8406, 8958, 8597, 8642, 8711, 8510, 8551, 8617, 8677, 8296, 8473, 8412, 8598, 8460, 8245, 8558, 8521, 8506, 8754, 8714, 8583, 8810, 8437, 8224, 8774, 8505, 8435, 8330, 8413, 8232, 8541, 8215, 8389, 8514, 8398, 8710, 8694, 8515, 8412, 8610, 8553, 8501, 8628, 8464, 8639, 8262, 8433, 8506, 8278, 8390, 8093, 8781, 8626, 8942, 8394, 8608, 8483, 8758, 8464, 8837, 8290, 8628, 8465, 8277, 8495, 8137, 8540, 8606, 8296, 8130, 8534, 8657, 8485, 8667, 8460, 8481, 8674, 8332, 8664, 8640, 8619, 8398, 8527, 8201, 8622, 8773, 8159, 8396, 8253, 7923, 8496, 8161, 8376, 8674, 8843, 
@@ -63,7 +61,7 @@ PROCESS_THREAD(unicast_sender_process, ev, data)
   static struct etimer send_timer;
   uip_ipaddr_t *addr;
   PROCESS_BEGIN();
-  powertrace_start(POWERTRACE_INTERVAL);  servreg_hack_init();
+  servreg_hack_init();
   set_global_address();
   simple_udp_register(&unicast_connection, UDP_PORT,
                       NULL, UDP_PORT, receiver);
