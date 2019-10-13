@@ -52,10 +52,8 @@ char message_buffer[100];
 uint16_t discrete_mean(uint16_t *y,uint16_t begin,uint16_t end){
 	uint16_t number_of_elements = end - begin, i, aux = 0;
 	
-	if( end <= begin ){
-		return 0;
-	}
-
+	if( end <= begin ) return 0;
+	
 	for(i = begin; i < end; i++){
 		aux = aux + ROUND_CLOSEST(y[i],number_of_elements);
 	}
@@ -66,10 +64,8 @@ uint16_t discrete_mean(uint16_t *y,uint16_t begin,uint16_t end){
 uint16_t weight_mean(uint16_t *x, uint16_t *y, uint16_t begin, uint16_t end){
 	uint16_t sum_mean = 0, total_sample = 0, i;
 
-	if( end <= begin ){
-		return 0;
-	}
-
+	if( end <= begin ) return 0;
+	
 	for(i = begin; i < end; i++){
 		sum_mean = sum_mean + x[i]*y[i];
 		total_sample = total_sample + y[i];
@@ -81,9 +77,8 @@ uint16_t weight_mean(uint16_t *x, uint16_t *y, uint16_t begin, uint16_t end){
 uint16_t select_maximun(uint16_t *data, uint16_t datalen, uint16_t value){
 	uint16_t upinterval = 0;
 	
-	while( data[upinterval] < value && upinterval < (datalen - 1)){
+	while( data[upinterval] < value && upinterval < (datalen - 1))
 		upinterval = upinterval + 1;
-	}
 	
 	return upinterval;
 }
@@ -101,13 +96,16 @@ void set_histogram(uint16_t *data, uint16_t data_index){
 	curve_frequency[0] = 0;
 	curve_data[0] = min_value + step2;
 
-	for(index = 0; index < data_index; index++){
+	// printf("Histogram: %u - %u - %u\n", NUMBER_OF_BINS, data_index, max_value);
+
+	while(index < data_index){
 		if( data[index] <= sup_data_range ){
 			curve_frequency[curve_index] = curve_frequency[curve_index] + 1;
-		}else if(curve_index <= NUMBER_OF_BINS - 2 ){ // This is to not write on other vector
+			index = index + 1;
+		}else { // This is to not write on other vector
 			curve_index = curve_index + 1;
-			curve_frequency[curve_index] = 1;
 			curve_data[curve_index] = sup_data_range + step/2;
+			curve_frequency[curve_index] = 0;
 			sup_data_range = sup_data_range + step;
 		}
 	}
@@ -117,35 +115,37 @@ void set_average_function(uint16_t K, uint16_t step){
 	uint16_t k;
 
 	for(k = 0; k < K; k++ ){
-		function_frequency[k] = discrete_mean(curve_frequency, k*step, (k + 1)*step);
-		function_data[k]      = weight_mean(curve_data,curve_frequency,k*step, (k + 1)*step);
-		function_status[k]    = 0;
+		function_frequency[k] = discrete_mean(curve_frequency, k*step, (k+1)*step);
+		function_data[k]      = discrete_mean(curve_data, k*step, (k+1)*step);
+		function_status[k]    = 1;
 	}
-
 }
 
 void classify_points(){
 	uint16_t index;
-		
+
 	// Classificando os pontos do meio
-	for(index = 0; index < NUMBER_OF_INTERVALS; index++ ){
+	for(index = 1; index < NUMBER_OF_INTERVALS; index++ ){
+		// printf("Status[index-1]: %u - %u\n",function_status[index-1],function_status[index]);
 		if( function_frequency[index-1] <= function_frequency[index]){
-			if( function_status[index-1] < 1){
-				function_status[index] = 1;
-			}else if( function_status[index-1] == 1){
-				function_status[index-1] = 0;
-				function_status[index] = 1;
+			if( function_status[index-1] < 2){
+				function_status[index] = 2;
+			} else {
+				function_status[index-1] = 1;
+				function_status[index] = 2;
 			}
-		} else {
-			if( function_status[index-1] > -1 ){
-				function_status[index] = -1;
-			}else if( function_status[index-1] == -1){
-				function_status[index-1] = 0;
-				function_status[index] = -1;
+		} else if( function_frequency[index-1] > function_frequency[index]){
+			if( function_status[index-1] > 0 ){
+				function_status[index] = 0;
+			} else {
+				function_status[index-1] = 1;
+				function_status[index] = 0;
 			}
-		}       
+		}
+		// printf("Data: %u - %u\n",function_frequency[index-1],function_frequency[index]);
+		// printf("Status[index]: %u - %u\n",function_status[index-1],function_status[index]);
 	}
-	function_status[NUMBER_OF_INTERVALS - 1] = 0;
+	function_status[NUMBER_OF_INTERVALS - 1] = 1;
 }
 
 // Função processo principal
@@ -166,17 +166,32 @@ void hercules(){
 	// Preencher os vetores da curva de frequência
 	set_histogram(samples, samples_counter);
 
+	// for(i = 0; i < NUMBER_OF_BINS ; i++){
+	// 	printf("Histogram: %d - %d\n",
+	// 		curve_data[i],
+	// 		curve_frequency[i]
+	// 	);
+	// }
+
 	// Preencher os vetores da função de média
 	set_average_function(NUMBER_OF_INTERVALS, NUMBER_OF_BINS/NUMBER_OF_INTERVALS);
 
 	// Classificar os pontos da função de médias
 	classify_points();
 
+	for(i = 0; i < NUMBER_OF_INTERVALS; i++){
+		printf("mean_function: %d - %d - %d\n",
+			function_data[i], 
+			function_frequency[i], 
+			function_status[i] 
+		);
+	}
+
 	// selecionar os vales, excluindo os vales do extremo
 	split_counter = 0;
 	// selecionando os vales que foram identificados
 	for(i = 0; i < NUMBER_OF_INTERVALS; i++){
-		if(function_status[i] == -1){
+		if(function_status[i] == 0){ // Zero é valor para vale
 			split_points[split_counter++] = function_data[i];
 		}
 	}
@@ -188,13 +203,28 @@ void hercules(){
 		value = discrete_mean(samples,begin, end);
 
 		// printf("Data[%u] = %u\n", i, value);
-		sprintf(message_buffer, "%s%u, %u.%u),(", message_buffer, i, value/100, value % 100);
+		sprintf(message_buffer, "%s%u, %u.%u),(",
+		 message_buffer, i, value/100, value % 100);
 		begin = end + 1;
 	}
 
 	value = discrete_mean(samples,begin, samples_counter);
-	sprintf(message_buffer, "%s%u, %u.%u)", message_buffer, i, value/100, value % 100);
+	sprintf(message_buffer, "%s%u, %u.%u)", 
+		message_buffer, i, value/100, value % 100);
 	printf("%s\n", message_buffer);
+}
+
+static uint16_t strtoint(const uint8_t *data, uint16_t begin, uint16_t end){
+	uint16_t j, k, aux, result;
+	result = 0;
+	// printf("Index: %5u - %u\n", begin, end);
+	for(j = begin; j < end; j++){
+		aux = 1;
+		for(k = 1; k < (end - j); k++) aux *= 10;
+		result += (data[j] - '0')*aux;
+		// printf("%5u - %u - %u\n", aux, data[j] - '0', result);
+	}
+	return result;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -210,33 +240,21 @@ receiver(struct simple_udp_connection *c,
 		 const uint8_t *data,
 		 uint16_t datalen)
 { 
-  uint16_t i, j, k;
-  uint16_t aux, localnumbersamples, pointer;
+  uint16_t i, localnumbersamples, pointer;
 
   if( locked == 0){
   	if( data[0] == 'c'){
+  		// printf("%s\n", data);
   		for(i = 2; data[i] != ':'; i++);
 
-  		localnumbersamples = 0;
-  		for(j = 2; j < i; j++){
-			aux = 1;
-			for(k = 1; k < (i - 1 - j); k++) aux *= 10;
-			localnumbersamples += (data[j] - '0')*aux;
-		}
+  		localnumbersamples = strtoint(data,2, i);
+		// printf("Number: %u\n",localnumbersamples);
 
 		for(; localnumbersamples > 0; localnumbersamples--){
-		  	samples_counter = samples_counter % NUMBER_OF_SAMPLES;
-			samples[samples_counter] = 0;
-			pointer = ++i;
-			for(; data[i] != ',' && i < datalen; i++);
-			printf("%d - %d - %d \n", pointer, i, datalen);
-			for(j = pointer; j < i; j++){
-				aux = 1;
-				for(k = j; k < (i - 1); k++) aux *= 10;
-				printf("%d - %c\n", aux, data[j]);
-
-				samples[samples_counter] += (data[j] - '0')*aux;
-			}
+			pointer = i + 1;
+			for(; data[i] != ',' && i < (datalen - 1); i++);
+			samples[samples_counter] = strtoint(data,pointer, i);
+			printf("Received %u\n",samples[samples_counter]);
 			samples_counter = (samples_counter + 1) % NUMBER_OF_SAMPLES;
 		}
 	}
@@ -287,6 +305,34 @@ create_rpl_dag(uip_ipaddr_t *ipaddr)
   } else {
 	PRINTF("failed to create a new RPL DAG\n");
   }
+}
+/*---------------------------------------------------------------------------*/
+PROCESS_THREAD(unicast_receiver_process, ev, data)
+{
+  static struct etimer collect_timer;
+  uip_ipaddr_t *ipaddr;
+
+  PROCESS_BEGIN();
+
+  // Iniciando o temporizador
+  etimer_set(&collect_timer, COLLECT_INTERVAL);
+
+  while(1) {
+	// PROCESS_WAIT_EVENT();
+	PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&collect_timer));
+
+	printf("Collecting data\n");
+	locked = 1;
+
+	hercules();
+
+	printf("Finishing data collection\n");
+	locked = 0;
+	
+
+	etimer_reset(&collect_timer);    
+  }
+  PROCESS_END();
 }
 /*---------------------------------------------------------------------------*/
 PROCESS_THREAD(unicast_receiver_process, ev, data)
