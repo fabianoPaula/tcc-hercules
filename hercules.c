@@ -97,7 +97,6 @@ void set_histogram(uint16_t *data, uint16_t data_index){
 	curve_data[0] = min_value + step2;
 
 	// printf("Histogram: %u - %u - %u\n", NUMBER_OF_BINS, data_index, max_value);
-
 	while(index < data_index){
 		if( data[index] <= sup_data_range ){
 			curve_frequency[curve_index] = curve_frequency[curve_index] + 1;
@@ -214,35 +213,6 @@ void hercules(){
 	printf("%s\n", message_buffer);
 }
 
-static uint16_t strtoint(const uint8_t *data, uint16_t begin, uint16_t end){
-	uint16_t j, k, aux, result;
-	result = 0;
-	// printf("Index: %5u - %u\n", begin, end);
-	for(j = begin; j < end; j++){
-		aux = 1;
-		for(k = 1; k < (end - j); k++) aux *= 10;
-		result += (data[j] - '0')*aux;
-		// printf("%5u - %u - %u\n", aux, data[j] - '0', result);
-	}
-	return result;
-}
-
-void static read_message(const uint8_t *data, uint16_t datalen){
-	uint16_t i, localnumbersamples, pointer;
-
-	for(i = 2; data[i] != ':'; i++);
-	localnumbersamples = strtoint(data,2, i);
-	// printf("Number: %u\n",localnumbersamples);
-
-	for(; localnumbersamples > 0; localnumbersamples--){
-		pointer = i + 1;
-		for(; data[i] != ',' && i < (datalen - 1); i++);
-		samples[samples_counter] = strtoint(data,pointer, i);
-		printf("Received %u\n",samples[samples_counter]);
-		samples_counter = (samples_counter + 1) % NUMBER_OF_SAMPLES;
-	}
-}
-
 /*---------------------------------------------------------------------------*/
 PROCESS(unicast_receiver_process, "Hercules process");
 AUTOSTART_PROCESSES(&unicast_receiver_process);
@@ -251,8 +221,26 @@ static void receiver(struct simple_udp_connection *c,
 		const uip_ipaddr_t *sender_addr,   uint16_t sender_port,
 		const uip_ipaddr_t *receiver_addr, uint16_t receiver_port,
 		const uint8_t      *data,          uint16_t datalen){
-  	if( locked == 0 && data[0] == 'c')
-  		read_message(data,datalen);
+  	uint16_t i, localnumbersamples, pointer;	
+  	char subbuff[20];
+
+  	if( locked == 0 && data[0] == 'c'){
+  		for(i = 2; data[i] != ':'; i++);
+		memcpy( subbuff, &data[2], i );
+		subbuff[i] = '\0';
+		localnumbersamples = atoi(subbuff);
+		
+		for(; localnumbersamples > 0; localnumbersamples--){
+			pointer = i + 1;
+			for(; data[i] != ',' && i < (datalen - 1); i++);
+			memcpy( subbuff, &data[pointer], i );
+			subbuff[i] = '\0';
+			// printf("Number: %s\n",subbuff);
+			samples[samples_counter] = atoi(subbuff);
+			// printf("Received: %u\n", samples[samples_counter]);
+			samples_counter = (samples_counter + 1) % NUMBER_OF_SAMPLES;
+		}
+  	}
 }
 
 /*---------------------------------------------------------------------------*/

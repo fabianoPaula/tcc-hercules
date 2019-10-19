@@ -17,7 +17,7 @@
 #define UDP_PORT 1234
 #define SERVICE_ID 190
 
-#define SEND_INTERVAL	(60 * CLOCK_SECOND)
+#define SEND_INTERVAL	(10 * CLOCK_SECOND)
 #define POWERTRACE_INTERVAL (2 * CLOCK_SECOND)
 
 #define NUMBER_OF_SAMPLES 200
@@ -36,10 +36,6 @@ uint16_t samples_counter = 0;
 
 char message_buffer[100];
 
-// void printf_float(float number){
-// 	printf("%ld.%02u", (long) number, (unsigned)((number-myfloor(number))*100));
-// }
-
 float myfloor(float x) {
   if(x >= 0.0f) {
     return (float)((int)x);
@@ -48,26 +44,20 @@ float myfloor(float x) {
   }
 }
 
-float mysqrt(float number) {
-	float sqrt = 0, i, upper, lower;
+void printf_float(float number){
+	printf("%ld.%02u", (long) number, (unsigned)((number-myfloor(number))*100));
+}
 
-	if ( number < 62025){
-		for( i = 0; i < 255; i++){
-			lower = i*i;
-			upper = (i+1)*(i+1);
-			if( lower <= number && number < upper){
-				sqrt = i;
-				break;
-			}
-		}	
-	}else{
-		sqrt = 255;
+float mysqrt(float number) {
+	float temp = 0;
+	float s = number/2;
+
+	while( (s - temp) > 0.001) {
+		temp = s;
+		s = (temp + number/temp)/2;
 	}
 	
-	while( sqrt*sqrt < number )
-		sqrt = sqrt + 0.001;
-	
-	return sqrt;
+	return s;
 }
 
 float kurtosis(float *x, uint16_t begin, uint16_t end){
@@ -95,7 +85,6 @@ void skew_mean(float *x, uint16_t begin, uint16_t end, float *mean, float *skew)
 	if( number_of_elements == 0 ) return;
 
 	mean_value = 0;
-
 	for(i = begin; i < end; i++)
 		mean_value = mean_value + x[i]/number_of_elements;
 
@@ -105,7 +94,7 @@ void skew_mean(float *x, uint16_t begin, uint16_t end, float *mean, float *skew)
 
 	sd = mysqrt(sd/number_of_elements);
 
-	if ( number_of_elements % 1 == 1){
+	if( number_of_elements % 1 == 1){
 		p50 = x[(begin+end)/2];
 	}else{
 		p50 = (x[(begin + end)/2] + x[(begin + end)/2 - 1])/2;
@@ -119,7 +108,7 @@ void hepheastus(uint16_t begin, uint16_t end, uint16_t level){
 	uint16_t i, j, value, number_of_elements, upper;
 	float skew_value, kurtosis_value, mean_value;
 
-	if( level == 0){
+	if( level == 0) {
 		// Ordenando vertor de leitura 
 		for(i = 0; i < samples_counter - 1; i++){
 			for(j = i; j < samples_counter; j++){
@@ -142,12 +131,13 @@ void hepheastus(uint16_t begin, uint16_t end, uint16_t level){
 		}else{
 			printf("Platykurtic Set! : ");
 		}
-
 	}else{
 		split_points[split_counter++] = mean_value;
 
 		upper = begin;
 		for(; samples[upper] < mean_value && upper < (end - 1); upper++);
+
+		printf("Hepheastus; Next level %u\n", level+1);
 
 		hepheastus(begin, upper, level + 1);
 		hepheastus(upper,   end, level + 1);
@@ -191,52 +181,37 @@ void hepheastus(uint16_t begin, uint16_t end, uint16_t level){
 PROCESS(unicast_receiver_process, "Hepheastus process");
 AUTOSTART_PROCESSES(&unicast_receiver_process);
 /*---------------------------------------------------------------------------*/
-static void
-receiver(struct simple_udp_connection *c,
-		 const uip_ipaddr_t *sender_addr,
-		 uint16_t sender_port,
-		 const uip_ipaddr_t *receiver_addr,
-		 uint16_t receiver_port,
-		 const uint8_t *data,
-		 uint16_t datalen)
-{ 
-  uint16_t i, j, k;
-  uint16_t aux, localnumbersamples, pointer;
+static void receiver(struct simple_udp_connection *c,
+		const uip_ipaddr_t *sender_addr,   uint16_t sender_port,
+		const uip_ipaddr_t *receiver_addr, uint16_t receiver_port,
+		const uint8_t      *data,          uint16_t datalen){
 
-  if( locked == 0){
-  	if( data[0] == 'c'){
+	uint16_t i, localnumbersamples, pointer;	
+  	char subbuff[20];
+
+  	if( locked == 0 && data[0] == 'c'){
   		for(i = 2; data[i] != ':'; i++);
-
-  		localnumbersamples = 0;
-  		for(j = 2; j < i; j++){
-			aux = 1;
-			for(k = 1; k < (i - 1 - j); k++) aux *= 10;
-			localnumbersamples += (data[j] - '0')*aux;
-		}
-
+		memcpy( subbuff, &data[2], i );
+		subbuff[i] = '\0';
+		localnumbersamples = atoi(subbuff);
+		
 		for(; localnumbersamples > 0; localnumbersamples--){
-		  	samples_counter = samples_counter % NUMBER_OF_SAMPLES;
-			samples[samples_counter] = 0;
-			pointer = ++i;
-			for(; data[i] != ',' && i < datalen; i++);
-			for(j = pointer; j < i; j++){
-				aux = 1;
-				for(k = j; k < (i - 1); k++) aux *= 10.0;
-
-				samples[samples_counter] += (data[j] - '0')*aux;
-			}
-			samples[samples_counter] = samples[samples_counter]/100;
+			pointer = i + 1;
+			for(; data[i] != ',' && i < (datalen - 1); i++);
+			memcpy( subbuff, &data[pointer], i );
+			subbuff[i] = '\0';
+			// printf("Number: %s\n",subbuff);
+			samples[samples_counter] = (1.0*atoi(subbuff))/100;
+			// printf("Received: ");
+			// printf_float(samples[samples_counter]);
+			// printf("\n");
 			samples_counter = (samples_counter + 1) % NUMBER_OF_SAMPLES;
 		}
-	}
-  }
-  
+  	}
 }
 
 // /*---------------------------------------------------------------------------*/
-static uip_ipaddr_t *
-set_global_address(void)
-{
+static uip_ipaddr_t * set_global_address(void) {
   static uip_ipaddr_t ipaddr;
   int i;
   uint8_t state;
@@ -258,9 +233,7 @@ set_global_address(void)
   return &ipaddr;
 }
 /*---------------------------------------------------------------------------*/
-static void
-create_rpl_dag(uip_ipaddr_t *ipaddr)
-{
+static void create_rpl_dag(uip_ipaddr_t *ipaddr) {
   struct uip_ds6_addr *root_if;
 
   root_if = uip_ds6_addr_lookup(ipaddr);
@@ -278,46 +251,37 @@ create_rpl_dag(uip_ipaddr_t *ipaddr)
   }
 }
 /*---------------------------------------------------------------------------*/
-PROCESS_THREAD(unicast_receiver_process, ev, data)
-{
+PROCESS_THREAD(unicast_receiver_process, ev, data){
   static struct etimer periodic_timer;
   uip_ipaddr_t *ipaddr;
 
   PROCESS_BEGIN();
-
   // Iniciando o powertrace
   // powertrace_start(POWERTRACE_INTERVAL);
 
   // Iniciando o serviço de rede
   servreg_hack_init();
-
   ipaddr = set_global_address();
-
   create_rpl_dag(ipaddr);
-
   servreg_hack_register(SERVICE_ID, ipaddr);
-
   simple_udp_register(&hepheastus_connection, UDP_PORT,NULL, UDP_PORT, receiver);
 
   // Iniciando o temporizador
   etimer_set(&periodic_timer, SEND_INTERVAL);
-
-  // printf("RTIMER_SECOND %u\n", RTIMER_SECOND);
-
-  printf("Open collector window\n");
+  // printf("Open collector window\n");
   while(1) {
 	// PROCESS_WAIT_EVENT();
 	PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
 
-	printf("Close collector window\n");
-	printf("Open fusion window\n");
+	// printf("Close collector window\n");
+	// printf("Open fusion window\n");
 	locked = 1;
 
 	hepheastus(0, samples_counter, 0);
 
-	printf("Close fusion window\n");
+	// printf("Close fusion window\n");
 	locked = 0;
-	printf("Open collector window\n");
+	// printf("Open collector window\n");
 
 	etimer_reset(&periodic_timer);    
   }
