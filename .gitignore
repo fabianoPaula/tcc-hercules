@@ -41,6 +41,13 @@ build/
 flashprof.txt
 ramprof.txt
 
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+notebooks/GenerateSimulations/.ipynb_checkpoints/
 notebooks/GenerateData/.ipynb_checkpoints/
 notebooks/TesteDeAcuracia/.ipynb_checkpoints/
 notebooks/TesteDeAcuracia/datasets/
+
+simlautions/.ipynb_checkpoints/
+simlautions/hercules/.ipynb_checkpoints/
+simlautions/hepheastus/.ipynb_checkpoints/
