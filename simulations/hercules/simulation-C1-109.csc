@@ -5,8 +5,8 @@
   <project EXPORT="discard">[APPS_DIR]/collect-view</project>
   <project EXPORT="discard">[APPS_DIR]/powertracker</project>
   <simulation>
-    <title>hepheastusC1 Seed:101</title>
-    <randomseed>101</randomseed>
+    <title>herculesC1 Seed:109</title>
+    <randomseed>109</randomseed>
     <motedelay_us>1000000</motedelay_us>
     <radiomedium>
       se.sics.cooja.radiomediums.UDGM
@@ -42,9 +42,9 @@
       se.sics.cooja.mspmote.Z1MoteType
       <identifier>z12</identifier>
       <description>PowerlineCollector</description>
-      <source EXPORT="discard">[CONTIKI_DIR]/examples/tcc-iot/collector-powerline-C1-101.c</source>
-      <commands EXPORT="discard">make collector-powerline-C1-101.z1 TARGET=z1</commands>
-      <firmware EXPORT="copy">[CONTIKI_DIR]/examples/tcc-iot/collector-powerline-C1-101.z1</firmware>
+      <source EXPORT="discard">[CONTIKI_DIR]/examples/tcc-iot/collector-powerline-C1-109.c</source>
+      <commands EXPORT="discard">make collector-powerline-C1-109.z1 TARGET=z1</commands>
+      <firmware EXPORT="copy">[CONTIKI_DIR]/examples/tcc-iot/collector-powerline-C1-109.z1</firmware>
       <moteinterface>se.sics.cooja.interfaces.Position</moteinterface>
       <moteinterface>se.sics.cooja.interfaces.RimeAddress</moteinterface>
       <moteinterface>se.sics.cooja.interfaces.IPAddress</moteinterface>
@@ -62,9 +62,9 @@
       se.sics.cooja.mspmote.Z1MoteType
       <identifier>z13</identifier>
       <description>BatteryCollector</description>
-      <source EXPORT="discard">[CONTIKI_DIR]/examples/tcc-iot/collector-battery-C1-101.c</source>
-      <commands EXPORT="discard">make collector-battery-C1-101.z1 TARGET=z1</commands>
-      <firmware EXPORT="copy">[CONTIKI_DIR]/examples/tcc-iot/collector-battery-C1-101.z1</firmware>
+      <source EXPORT="discard">[CONTIKI_DIR]/examples/tcc-iot/collector-battery-C1-109.c</source>
+      <commands EXPORT="discard">make collector-battery-C1-109.z1 TARGET=z1</commands>
+      <firmware EXPORT="copy">[CONTIKI_DIR]/examples/tcc-iot/collector-battery-C1-109.z1</firmware>
       <moteinterface>se.sics.cooja.interfaces.Position</moteinterface>
       <moteinterface>se.sics.cooja.interfaces.RimeAddress</moteinterface>
       <moteinterface>se.sics.cooja.interfaces.IPAddress</moteinterface>

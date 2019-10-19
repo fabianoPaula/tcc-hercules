@@ -1,14 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<simconf>
-  <project EXPORT="discard">[APPS_DIR]/mrm</project>
+<simconf><project EXPORT="discard">[APPS_DIR]/mrm</project>
   <project EXPORT="discard">[APPS_DIR]/mspsim</project>
   <project EXPORT="discard">[APPS_DIR]/avrora</project>
   <project EXPORT="discard">[APPS_DIR]/serial_socket</project>
   <project EXPORT="discard">[APPS_DIR]/collect-view</project>
   <project EXPORT="discard">[APPS_DIR]/powertracker</project>
   <simulation>
-    <title>My simulation</title>
-    <randomseed>3</randomseed>
+    <title>herculesC1 Seed:101</title>
+    <randomseed>101</randomseed>
     <motedelay_us>1000000</motedelay_us>
     <radiomedium>
       se.sics.cooja.radiomediums.UDGM
@@ -413,4 +411,3 @@
     <location_y>108</location_y>
   </plugin>
 </simconf>
-
