@@ -12,7 +12,7 @@
 #include <string.h>
 #define UDP_PORT 1234
 #define SERVICE_ID 190
-#define SEND_INTERVAL    (5 * CLOCK_SECOND)
+#define SEND_INTERVAL    (30 * CLOCK_SECOND)
 #define SEND_TIME    (random_rand() % (SEND_INTERVAL))
 #define DATA_SIZE 100
 
@@ -88,10 +88,7 @@ PROCESS_THREAD(unicast_sender_process, ev, data)
 
       sprintf(buf, "c:1:%d", samples[random_rand() % DATA_SIZE]);
       simple_udp_sendto(&unicast_connection, buf, strlen(buf) + 1, addr);
-      printf("Sending unicast to ");
-      uip_debug_ipaddr_print(addr);
-      printf(": %s \n", buf);
-    } else {
+          } else {
       printf("Service %d not found\n", SERVICE_ID);
     }
   }
