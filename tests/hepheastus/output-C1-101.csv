@@ -1,0 +1,238 @@
+00:00.848	ID:4	Rime started with address 193.12.0.0.0.0.0.4
+00:00.859	ID:4	MAC c1:0c:00:00:00:00:00:04 Contiki 2.7 started. Node id is set to 4.
+00:00.868	ID:4	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:00.880	ID:4	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0004
+00:00.885	ID:4	Starting 'Unicast sender example process'
+00:00.891	ID:4	IPv6 addresses: aaaa::c30c:0:0:4
+00:00.893	ID:4	fe80::c30c:0:0:4
+00:00.957	ID:7	Rime started with address 193.12.0.0.0.0.0.7
+00:00.968	ID:7	MAC c1:0c:00:00:00:00:00:07 Contiki 2.7 started. Node id is set to 7.
+00:00.977	ID:7	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:00.989	ID:7	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0007
+00:00.994	ID:7	Starting 'Unicast sender example process'
+00:01.000	ID:7	IPv6 addresses: aaaa::c30c:0:0:7
+00:01.002	ID:7	fe80::c30c:0:0:7
+00:01.069	ID:17	Rime started with address 193.12.0.0.0.0.0.17
+00:01.080	ID:17	MAC c1:0c:00:00:00:00:00:11 Contiki 2.7 started. Node id is set to 17.
+00:01.089	ID:17	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.102	ID:17	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0011
+00:01.106	ID:17	Starting 'Unicast sender example process'
+00:01.112	ID:17	IPv6 addresses: aaaa::c30c:0:0:11
+00:01.115	ID:17	fe80::c30c:0:0:11
+00:01.134	ID:1	Rime started with address 193.12.0.0.0.0.0.1
+00:01.145	ID:1	MAC c1:0c:00:00:00:00:00:01 Contiki 2.7 started. Node id is set to 1.
+00:01.153	ID:1	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.166	ID:1	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0001
+00:01.169	ID:1	Starting 'Hepheastus process'
+00:01.175	ID:1	IPv6 addresses: aaaa::c30c:0:0:1
+00:01.178	ID:1	fe80::c30c:0:0:1
+00:01.233	ID:12	Rime started with address 193.12.0.0.0.0.0.12
+00:01.244	ID:12	MAC c1:0c:00:00:00:00:00:0c Contiki 2.7 started. Node id is set to 12.
+00:01.253	ID:12	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.265	ID:12	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:000c
+00:01.270	ID:12	Starting 'Unicast sender example process'
+00:01.276	ID:12	IPv6 addresses: aaaa::c30c:0:0:c
+00:01.278	ID:12	fe80::c30c:0:0:c
+00:01.289	ID:9	Rime started with address 193.12.0.0.0.0.0.9
+00:01.292	ID:8	Rime started with address 193.12.0.0.0.0.0.8
+00:01.300	ID:9	MAC c1:0c:00:00:00:00:00:09 Contiki 2.7 started. Node id is set to 9.
+00:01.303	ID:8	MAC c1:0c:00:00:00:00:00:08 Contiki 2.7 started. Node id is set to 8.
+00:01.309	ID:9	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.312	ID:8	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.321	ID:9	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0009
+00:01.323	ID:19	Rime started with address 193.12.0.0.0.0.0.19
+00:01.324	ID:8	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0008
+00:01.324	ID:20	Rime started with address 193.12.0.0.0.0.0.20
+00:01.326	ID:9	Starting 'Unicast sender example process'
+00:01.329	ID:8	Starting 'Unicast sender example process'
+00:01.332	ID:9	IPv6 addresses: aaaa::c30c:0:0:9
+00:01.334	ID:19	MAC c1:0c:00:00:00:00:00:13 Contiki 2.7 started. Node id is set to 19.
+00:01.334	ID:9	fe80::c30c:0:0:9
+00:01.335	ID:8	IPv6 addresses: aaaa::c30c:0:0:8
+00:01.336	ID:20	MAC c1:0c:00:00:00:00:00:14 Contiki 2.7 started. Node id is set to 20.
+00:01.338	ID:8	fe80::c30c:0:0:8
+00:01.342	ID:19	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.344	ID:20	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.355	ID:19	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0013
+00:01.357	ID:20	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0014
+00:01.360	ID:19	Starting 'Unicast sender example process'
+00:01.362	ID:20	Starting 'Unicast sender example process'
+00:01.364	ID:18	Rime started with address 193.12.0.0.0.0.0.18
+00:01.366	ID:19	IPv6 addresses: aaaa::c30c:0:0:13
+00:01.368	ID:20	IPv6 addresses: aaaa::c30c:0:0:14
+00:01.369	ID:19	fe80::c30c:0:0:13
+00:01.370	ID:20	fe80::c30c:0:0:14
+00:01.375	ID:18	MAC c1:0c:00:00:00:00:00:12 Contiki 2.7 started. Node id is set to 18.
+00:01.383	ID:18	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.395	ID:10	Rime started with address 193.12.0.0.0.0.0.10
+00:01.396	ID:18	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0012
+00:01.401	ID:18	Starting 'Unicast sender example process'
+00:01.406	ID:10	MAC c1:0c:00:00:00:00:00:0a Contiki 2.7 started. Node id is set to 10.
+00:01.407	ID:18	IPv6 addresses: aaaa::c30c:0:0:12
+00:01.410	ID:18	fe80::c30c:0:0:12
+00:01.415	ID:10	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.427	ID:10	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:000a
+00:01.432	ID:10	Starting 'Unicast sender example process'
+00:01.438	ID:10	IPv6 addresses: aaaa::c30c:0:0:a
+00:01.441	ID:10	fe80::c30c:0:0:a
+00:01.458	ID:14	Rime started with address 193.12.0.0.0.0.0.14
+00:01.465	ID:11	Rime started with address 193.12.0.0.0.0.0.11
+00:01.469	ID:14	MAC c1:0c:00:00:00:00:00:0e Contiki 2.7 started. Node id is set to 14.
+00:01.476	ID:11	MAC c1:0c:00:00:00:00:00:0b Contiki 2.7 started. Node id is set to 11.
+00:01.477	ID:14	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.484	ID:11	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.490	ID:14	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:000e
+00:01.495	ID:14	Starting 'Unicast sender example process'
+00:01.497	ID:11	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:000b
+00:01.500	ID:14	IPv6 addresses: aaaa::c30c:0:0:e
+00:01.502	ID:11	Starting 'Unicast sender example process'
+00:01.503	ID:14	fe80::c30c:0:0:e
+00:01.507	ID:11	IPv6 addresses: aaaa::c30c:0:0:b
+00:01.510	ID:11	fe80::c30c:0:0:b
+00:01.545	ID:15	Rime started with address 193.12.0.0.0.0.0.15
+00:01.556	ID:15	MAC c1:0c:00:00:00:00:00:0f Contiki 2.7 started. Node id is set to 15.
+00:01.560	ID:6	Rime started with address 193.12.0.0.0.0.0.6
+00:01.563	ID:21	Rime started with address 193.12.0.0.0.0.0.21
+00:01.565	ID:15	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.571	ID:6	MAC c1:0c:00:00:00:00:00:06 Contiki 2.7 started. Node id is set to 6.
+00:01.574	ID:21	MAC c1:0c:00:00:00:00:00:15 Contiki 2.7 started. Node id is set to 21.
+00:01.577	ID:15	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:000f
+00:01.580	ID:6	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.582	ID:15	Starting 'Unicast sender example process'
+00:01.583	ID:21	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.588	ID:15	IPv6 addresses: aaaa::c30c:0:0:f
+00:01.591	ID:15	fe80::c30c:0:0:f
+00:01.592	ID:13	Rime started with address 193.12.0.0.0.0.0.13
+00:01.592	ID:6	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0006
+00:01.596	ID:21	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0015
+00:01.597	ID:6	Starting 'Unicast sender example process'
+00:01.600	ID:21	Starting 'Unicast sender example process'
+00:01.603	ID:13	MAC c1:0c:00:00:00:00:00:0d Contiki 2.7 started. Node id is set to 13.
+00:01.603	ID:6	IPv6 addresses: aaaa::c30c:0:0:6
+00:01.606	ID:6	fe80::c30c:0:0:6
+00:01.606	ID:21	IPv6 addresses: aaaa::c30c:0:0:15
+00:01.609	ID:21	fe80::c30c:0:0:15
+00:01.611	ID:13	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.620	ID:3	Rime started with address 193.12.0.0.0.0.0.3
+00:01.624	ID:13	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:000d
+00:01.629	ID:13	Starting 'Unicast sender example process'
+00:01.631	ID:3	MAC c1:0c:00:00:00:00:00:03 Contiki 2.7 started. Node id is set to 3.
+00:01.634	ID:13	IPv6 addresses: aaaa::c30c:0:0:d
+00:01.637	ID:13	fe80::c30c:0:0:d
+00:01.639	ID:3	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.652	ID:3	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0003
+00:01.657	ID:3	Starting 'Unicast sender example process'
+00:01.663	ID:3	IPv6 addresses: aaaa::c30c:0:0:3
+00:01.665	ID:3	fe80::c30c:0:0:3
+00:01.716	ID:16	Rime started with address 193.12.0.0.0.0.0.16
+00:01.727	ID:16	MAC c1:0c:00:00:00:00:00:10 Contiki 2.7 started. Node id is set to 16.
+00:01.735	ID:16	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.748	ID:16	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0010
+00:01.753	ID:16	Starting 'Unicast sender example process'
+00:01.753	ID:2	Rime started with address 193.12.0.0.0.0.0.2
+00:01.753	ID:5	Rime started with address 193.12.0.0.0.0.0.5
+00:01.759	ID:16	IPv6 addresses: aaaa::c30c:0:0:10
+00:01.762	ID:16	fe80::c30c:0:0:10
+00:01.764	ID:2	MAC c1:0c:00:00:00:00:00:02 Contiki 2.7 started. Node id is set to 2.
+00:01.764	ID:5	MAC c1:0c:00:00:00:00:00:05 Contiki 2.7 started. Node id is set to 5.
+00:01.773	ID:2	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.773	ID:5	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.785	ID:2	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0002
+00:01.785	ID:5	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0005
+00:01.790	ID:2	Starting 'Unicast sender example process'
+00:01.790	ID:5	Starting 'Unicast sender example process'
+00:01.796	ID:2	IPv6 addresses: aaaa::c30c:0:0:2
+00:01.796	ID:5	IPv6 addresses: aaaa::c30c:0:0:5
+00:01.798	ID:2	fe80::c30c:0:0:2
+00:01.799	ID:5	fe80::c30c:0:0:5
+01:01.176	ID:1	Round: 0
+01:01.600	ID:1	SkewValue(0): 0.07
+01:01.643	ID:1	He:(0, 75.59)
+02:01.176	ID:1	Round: 1
+02:01.693	ID:1	SkewValue(0): 0.18
+02:01.742	ID:1	He:(0, 76.94)
+03:01.176	ID:1	Round: 2
+03:01.818	ID:1	SkewValue(0): 0.14
+03:01.872	ID:1	He:(0, 76.78)
+04:01.176	ID:1	Round: 3
+04:01.871	ID:1	SkewValue(0): 0.27
+04:01.929	ID:1	He:(0, 75.02)
+05:01.176	ID:1	Round: 4
+05:01.903	ID:1	SkewValue(0): 0.27
+05:01.962	ID:1	He:(0, 73.05)
+06:01.176	ID:1	Round: 5
+06:01.871	ID:1	SkewValue(0): 0.18
+06:01.929	ID:1	He:(0, 71.41)
+07:01.176	ID:1	Round: 6
+07:01.867	ID:1	SkewValue(0): 0.30
+07:01.925	ID:1	He:(0, 69.79)
+08:01.176	ID:1	Round: 7
+08:01.903	ID:1	SkewValue(0): 0.14
+08:01.961	ID:1	He:(0, 69.38)
+09:01.176	ID:1	Round: 8
+09:01.882	ID:1	SkewValue(0): 0.31
+09:01.941	ID:1	He:(0, 73.10)
+10:01.176	ID:1	Round: 9
+10:01.816	ID:1	SkewValue(0): 0.24
+10:01.871	ID:1	He:(0, 73.18)
+11:01.176	ID:1	Round: 10
+11:01.861	ID:1	SkewValue(0): 0.24
+11:01.918	ID:1	He:(0, 73.07)
+12:01.176	ID:1	Round: 11
+12:01.871	ID:1	SkewValue(0): 0.24
+12:01.928	ID:1	He:(0, 69.82)
+13:01.176	ID:1	Round: 12
+13:01.881	ID:1	SkewValue(0): 0.25
+13:01.939	ID:1	He:(0, 71.51)
+14:01.176	ID:1	Round: 13
+14:01.861	ID:1	SkewValue(0): 0.27
+14:01.918	ID:1	He:(0, 71.79)
+15:01.176	ID:1	Round: 14
+15:01.870	ID:1	SkewValue(0): 0.23
+15:01.928	ID:1	He:(0, 72.03)
+16:01.176	ID:1	Round: 15
+16:01.881	ID:1	SkewValue(0): 0.00
+16:01.939	ID:1	He:(0, 71.87)
+17:01.176	ID:1	Round: 16
+17:01.880	ID:1	SkewValue(0): 0.20
+17:01.939	ID:1	He:(0, 74.75)
+18:01.176	ID:1	Round: 17
+18:01.881	ID:1	SkewValue(0): 0.23
+18:01.940	ID:1	He:(0, 69.43)
+19:01.176	ID:1	Round: 18
+19:01.870	ID:1	SkewValue(0): 0.22
+19:01.928	ID:1	He:(0, 70.55)
+20:01.176	ID:1	Round: 19
+20:01.880	ID:1	SkewValue(0): 0.25
+20:01.939	ID:1	He:(0, 71.37)
+21:01.176	ID:1	Round: 20
+21:01.881	ID:1	SkewValue(0): 0.23
+21:01.939	ID:1	He:(0, 70.65)
+22:01.176	ID:1	Round: 21
+22:01.839	ID:1	SkewValue(0): 0.26
+22:01.895	ID:1	He:(0, 68.54)
+23:01.176	ID:1	Round: 22
+23:01.860	ID:1	SkewValue(0): 0.26
+23:01.917	ID:1	He:(0, 74.00)
+24:01.176	ID:1	Round: 23
+24:01.871	ID:1	SkewValue(0): 0.16
+24:01.929	ID:1	He:(0, 73.52)
+25:01.176	ID:1	Round: 24
+25:01.882	ID:1	SkewValue(0): 0.25
+25:01.941	ID:1	He:(0, 72.73)
+26:01.176	ID:1	Round: 25
+26:01.871	ID:1	SkewValue(0): 0.26
+26:01.929	ID:1	He:(0, 70.54)
+27:01.176	ID:1	Round: 26
+27:01.871	ID:1	SkewValue(0): 0.26
+27:01.930	ID:1	He:(0, 69.02)
+28:01.176	ID:1	Round: 27
+28:01.860	ID:1	SkewValue(0): 0.20
+28:01.917	ID:1	He:(0, 70.15)
+29:01.176	ID:1	Round: 28
+29:01.828	ID:1	SkewValue(0): 0.25
+29:01.883	ID:1	He:(0, 70.27)
+30:01.176	ID:1	Round: 29
+30:01.903	ID:1	SkewValue(0): 0.27
+30:01.962	ID:1	He:(0, 71.61)
+30:01.963	ID:1	End of process

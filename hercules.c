@@ -18,7 +18,7 @@
 #define UDP_PORT 1234
 #define SERVICE_ID 190
 
-#define SEND_INTERVAL	(10 * CLOCK_SECOND)
+#define SEND_INTERVAL	(60 * CLOCK_SECOND)
 #define POWERTRACE_INTERVAL (2 * CLOCK_SECOND)
 
 #define NUMBER_OF_SAMPLES 200
@@ -178,13 +178,13 @@ void hercules(){
 	// Classificar os pontos da função de médias
 	classify_points();
 
-	for(i = 0; i < NUMBER_OF_INTERVALS; i++){
-		printf("mean_function: %d - %d - %d\n",
-			function_data[i], 
-			function_frequency[i], 
-			function_status[i] 
-		);
-	}
+	// for(i = 0; i < NUMBER_OF_INTERVALS; i++){
+	// 	printf("mean_function: %d - %d - %d\n",
+	// 		function_data[i], 
+	// 		function_frequency[i], 
+	// 		function_status[i] 
+	// 	);
+	// }
 
 	// selecionar os vales, excluindo os vales do extremo
 	split_counter = 0;
@@ -288,6 +288,7 @@ static void create_rpl_dag(uip_ipaddr_t *ipaddr){
 PROCESS_THREAD(unicast_receiver_process, ev, data){
   static struct etimer periodic_timer;
   uip_ipaddr_t *ipaddr;
+  uint16_t counter = 0;
 
   PROCESS_BEGIN();
 
@@ -304,7 +305,7 @@ PROCESS_THREAD(unicast_receiver_process, ev, data){
   etimer_set(&periodic_timer, SEND_INTERVAL);
 
   printf("Open collector window\n");
-  while(1) {
+  while(counter < 30) {
 	// PROCESS_WAIT_EVENT();
 	PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
 
@@ -315,6 +316,7 @@ PROCESS_THREAD(unicast_receiver_process, ev, data){
 	hercules();
 
 	printf("Close fusion window\n");
+	counter = counter + 1;
 	locked = 0;
 	printf("Open collector window\n");
 
