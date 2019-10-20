@@ -42,9 +42,9 @@
       se.sics.cooja.mspmote.Z1MoteType
       <identifier>z12</identifier>
       <description>PowerlineCollector</description>
-      <source EXPORT="discard">[CONTIKI_DIR]/examples/tcc-iot/collector-powerline-C2-163.c</source>
-      <commands EXPORT="discard">make collector-powerline-C2-163.z1 TARGET=z1</commands>
-      <firmware EXPORT="copy">[CONTIKI_DIR]/examples/tcc-iot/collector-powerline-C2-163.z1</firmware>
+      <source EXPORT="discard">[CONTIKI_DIR]/examples/tcc-iot/collector-powerline-C1-101.c</source>
+      <commands EXPORT="discard">make collector-powerline-C1-101.z1 TARGET=z1</commands>
+      <firmware EXPORT="copy">[CONTIKI_DIR]/examples/tcc-iot/collector-powerline-C1-101.z1</firmware>
       <moteinterface>se.sics.cooja.interfaces.Position</moteinterface>
       <moteinterface>se.sics.cooja.interfaces.RimeAddress</moteinterface>
       <moteinterface>se.sics.cooja.interfaces.IPAddress</moteinterface>

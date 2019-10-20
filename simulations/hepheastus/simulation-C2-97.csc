@@ -21,10 +21,10 @@
     <motetype>
       se.sics.cooja.mspmote.Z1MoteType
       <identifier>z11</identifier>
-      <description>Hercules</description>
-      <source EXPORT="discard">[CONTIKI_DIR]/examples/tcc-iot/hercules.c</source>
-      <commands EXPORT="discard">make hercules.z1 TARGET=z1</commands>
-      <firmware EXPORT="copy">[CONTIKI_DIR]/examples/tcc-iot/hercules.z1</firmware>
+      <description>Hepheastus</description>
+      <source EXPORT="discard">[CONTIKI_DIR]/examples/tcc-iot/hepheastus.c</source>
+      <commands EXPORT="discard">make hepheastus.z1 TARGET=z1</commands>
+      <firmware EXPORT="copy">[CONTIKI_DIR]/examples/tcc-iot/hepheastus.z1</firmware>
       <moteinterface>se.sics.cooja.interfaces.Position</moteinterface>
       <moteinterface>se.sics.cooja.interfaces.RimeAddress</moteinterface>
       <moteinterface>se.sics.cooja.interfaces.IPAddress</moteinterface>
@@ -41,7 +41,7 @@
     <motetype>
       se.sics.cooja.mspmote.Z1MoteType
       <identifier>z12</identifier>
-      <description>PowerlineCollector</description>
+      <description>PowerLineCollector</description>
       <source EXPORT="discard">[CONTIKI_DIR]/examples/tcc-iot/collector-powerline-C2-97.c</source>
       <commands EXPORT="discard">make collector-powerline-C2-97.z1 TARGET=z1</commands>
       <firmware EXPORT="copy">[CONTIKI_DIR]/examples/tcc-iot/collector-powerline-C2-97.z1</firmware>
@@ -82,8 +82,8 @@
       <breakpoints />
       <interface_config>
         se.sics.cooja.interfaces.Position
-        <x>64.61478266155451</x>
-        <y>34.5392443789231</y>
+        <x>34.603767445751714</x>
+        <y>27.86573208257137</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -96,8 +96,8 @@
       <breakpoints />
       <interface_config>
         se.sics.cooja.interfaces.Position
-        <x>95.83965024538959</x>
-        <y>47.795534922000854</y>
+        <x>10.115979381443298</x>
+        <y>12.130584192439862</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -110,8 +110,8 @@
       <breakpoints />
       <interface_config>
         se.sics.cooja.interfaces.Position
-        <x>91.81889584092801</x>
-        <y>53.08600124366085</y>
+        <x>9.123711340206185</x>
+        <y>16.950171821305844</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -124,8 +124,8 @@
       <breakpoints />
       <interface_config>
         se.sics.cooja.interfaces.Position
-        <x>85.99092914728642</x>
-        <y>45.036459171023594</y>
+        <x>9.123711340206185</x>
+        <y>20.635738831615118</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -138,8 +138,8 @@
       <breakpoints />
       <interface_config>
         se.sics.cooja.interfaces.Position
-        <x>88.85380590876838</x>
-        <y>39.50156409882515</y>
+        <x>18.337628865979383</x>
+        <y>7.027491408934708</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -152,8 +152,8 @@
       <breakpoints />
       <interface_config>
         se.sics.cooja.interfaces.Position
-        <x>85.68195490780239</x>
-        <y>54.990569119458456</y>
+        <x>16.666666666666668</x>
+        <y>16.666666666666668</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -166,8 +166,8 @@
       <breakpoints />
       <interface_config>
         se.sics.cooja.interfaces.Position
-        <x>85.6092122457555</x>
-        <y>35.49353663275042</y>
+        <x>15.219072164948452</x>
+        <y>26.447594501718214</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -180,8 +180,8 @@
       <breakpoints />
       <interface_config>
         se.sics.cooja.interfaces.Position
-        <x>77.64044609887918</x>
-        <y>59.857798135385664</y>
+        <x>29.25257731958763</x>
+        <y>7.452749140893472</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -194,8 +194,8 @@
       <breakpoints />
       <interface_config>
         se.sics.cooja.interfaces.Position
-        <x>69.17569998422316</x>
-        <y>55.83704373092406</y>
+        <x>28.969072164948454</x>
+        <y>16.52491408934708</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -208,8 +208,8 @@
       <breakpoints />
       <interface_config>
         se.sics.cooja.interfaces.Position
-        <x>97.32098081545439</x>
-        <y>41.870212641741645</y>
+        <x>23.724226804123713</x>
+        <y>21.202749140893474</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -222,8 +222,8 @@
       <breakpoints />
       <interface_config>
         se.sics.cooja.interfaces.Position
-        <x>77.40229886284057</x>
-        <y>51.90736339858027</y>
+        <x>24.29123711340206</x>
+        <y>11.421821305841924</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -236,8 +236,8 @@
       <breakpoints />
       <interface_config>
         se.sics.cooja.interfaces.Position
-        <x>30.0</x>
-        <y>40.0</y>
+        <x>40.23430182899023</x>
+        <y>37.82883157879871</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -250,8 +250,8 @@
       <breakpoints />
       <interface_config>
         se.sics.cooja.interfaces.Position
-        <x>30.0</x>
-        <y>45.0</y>
+        <x>56.80205007416525</x>
+        <y>50.08008025688475</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -264,8 +264,8 @@
       <breakpoints />
       <interface_config>
         se.sics.cooja.interfaces.Position
-        <x>35.0</x>
-        <y>40.0</y>
+        <x>51.03148595581126</x>
+        <y>47.46102519611245</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -278,8 +278,8 @@
       <breakpoints />
       <interface_config>
         se.sics.cooja.interfaces.Position
-        <x>35.0</x>
-        <y>45.0</y>
+        <x>48.47393999469248</x>
+        <y>57.599928103492054</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -292,8 +292,8 @@
       <breakpoints />
       <interface_config>
         se.sics.cooja.interfaces.Position
-        <x>40.0</x>
-        <y>40.0</y>
+        <x>40.072660208206386</x>
+        <y>49.67346720949214</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -306,8 +306,8 @@
       <breakpoints />
       <interface_config>
         se.sics.cooja.interfaces.Position
-        <x>40.0</x>
-        <y>45.0</y>
+        <x>59.71515343081475</x>
+        <y>58.47373094899467</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -320,8 +320,8 @@
       <breakpoints />
       <interface_config>
         se.sics.cooja.interfaces.Position
-        <x>45.0</x>
-        <y>40.0</y>
+        <x>41.27894404260451</x>
+        <y>57.72176318331929</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -334,8 +334,8 @@
       <breakpoints />
       <interface_config>
         se.sics.cooja.interfaces.Position
-        <x>45.0</x>
-        <y>45.0</y>
+        <x>47.322974496059054</x>
+        <y>40.59751666461281</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -348,8 +348,8 @@
       <breakpoints />
       <interface_config>
         se.sics.cooja.interfaces.Position
-        <x>50.0</x>
-        <y>40.0</y>
+        <x>60.04200575904522</x>
+        <y>44.087217383802006</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -362,8 +362,8 @@
       <breakpoints />
       <interface_config>
         se.sics.cooja.interfaces.Position
-        <x>50.0</x>
-        <y>45.0</y>
+        <x>57.63887666523409</x>
+        <y>55.614280292280675</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -376,10 +376,27 @@
   <plugin>
     se.sics.cooja.plugins.SimControl
     <width>280</width>
-    <z>0</z>
+    <z>2</z>
     <height>160</height>
-    <location_x>3</location_x>
-    <location_y>5</location_y>
+    <location_x>16</location_x>
+    <location_y>14</location_y>
+  </plugin>
+  <plugin>
+    se.sics.cooja.plugins.Visualizer
+    <plugin_config>
+      <moterelations>true</moterelations>
+      <skin>se.sics.cooja.plugins.skins.IDVisualizerSkin</skin>
+      <skin>se.sics.cooja.plugins.skins.TrafficVisualizerSkin</skin>
+      <skin>se.sics.cooja.plugins.skins.GridVisualizerSkin</skin>
+      <skin>se.sics.cooja.plugins.skins.MoteTypeVisualizerSkin</skin>
+      <skin>se.sics.cooja.plugins.skins.UDGMVisualizerSkin</skin>
+      <viewport>10.849807938774129 0.0 0.0 10.849807938774129 219.55576925558927 -138.3378411692358</viewport>
+    </plugin_config>
+    <width>400</width>
+    <z>0</z>
+    <height>400</height>
+    <location_x>10</location_x>
+    <location_y>259</location_y>
   </plugin>
   <plugin>
     se.sics.cooja.plugins.LogListener
@@ -388,26 +405,10 @@
       <formatted_time />
       <coloring />
     </plugin_config>
-    <width>1075</width>
-    <z>2</z>
-    <height>500</height>
-    <location_x>289</location_x>
-    <location_y>5</location_y>
-  </plugin>
-  <plugin>
-    se.sics.cooja.plugins.Visualizer
-    <plugin_config>
-      <moterelations>true</moterelations>
-      <skin>se.sics.cooja.plugins.skins.IDVisualizerSkin</skin>
-      <skin>se.sics.cooja.plugins.skins.MoteTypeVisualizerSkin</skin>
-      <skin>se.sics.cooja.plugins.skins.UDGMVisualizerSkin</skin>
-      <skin>se.sics.cooja.plugins.skins.GridVisualizerSkin</skin>
-      <viewport>5.239485052872249 0.0 0.0 5.239485052872249 -139.54818794980383 -82.9678546608694</viewport>
-    </plugin_config>
-    <width>400</width>
+    <width>1005</width>
     <z>1</z>
-    <height>400</height>
-    <location_x>2</location_x>
-    <location_y>108</location_y>
+    <height>601</height>
+    <location_x>361</location_x>
+    <location_y>5</location_y>
   </plugin>
 </simconf>
