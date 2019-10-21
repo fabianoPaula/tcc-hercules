@@ -49,14 +49,15 @@ void printf_float(float number){
 }
 
 float mysqrt(float number) {
-	float temp = 0;
-	float s = number/2;
+	float dist = 100, before = 0;
+	float s = number*0.5;
 
-	while( (s - temp) > 0.001) {
-		temp = s;
-		s = (temp + number/temp)/2;
+	while( dist > 0.001) {
+		before = s;
+		s = (s + number*1/s)*0.5;
+		dist = ( s > before) ? s - before : before - s;
 	}
-	
+
 	return s;
 }
 
@@ -107,17 +108,17 @@ void skew_mean(float *x, uint16_t begin, uint16_t end, float *mean, float *skew)
 	// printf_float(mean_value);
 	// printf("\n");
 
-	printf("Sd: ");
-	printf_float(sd);
-	printf("\n");
+	// printf("Sd: ");
+	// printf_float(sd);
+	// printf("\n");
 
-	printf("Sd2: ");
-	printf_float(sd2);
-	printf("\n");
+	// printf("Sd2: ");
+	// printf_float(sd2);
+	// printf("\n");
 
-	printf("SkewValue: ");
-	printf_float(*skew);
-	printf("\n");
+	// printf("SkewValue: ");
+	// printf_float(*skew);
+	// printf("\n");
 }
 
 void hepheastus(uint16_t begin, uint16_t end, uint16_t level){
@@ -142,17 +143,17 @@ void hepheastus(uint16_t begin, uint16_t end, uint16_t level){
 		}
 		// printf("Ordenado !!!\n");
 
-		// for(i = 0; i < samples_counter; i++){
-		// 	printf_float(samples[i]);
-		// 	printf(",\n");
-		// }
+		for(i = 0; i < samples_counter; i++){
+			printf_float(samples[i]);
+			printf(",\n");
+		}
 		split_counter = 0;
 	}
 
 	skew_mean(samples, begin, end, &mean_value, &skew_value);
 	// kurtosis_value = kurtosis(samples, begin, end);
 
-	if( skew_value < 1){
+	if( skew_value < 1.0){
 		// if( kurtosis_value < 0.26 ){
 		// 	printf("Leptokurtic Set! : ");
 		// }else{
@@ -164,7 +165,7 @@ void hepheastus(uint16_t begin, uint16_t end, uint16_t level){
 		upper = begin;
 		for(; samples[upper] < mean_value && upper < (end - 1); upper++);
 
-		printf("Hepheastus; Next level %u\n", level+1);
+		// printf("Hepheastus; Next level %u\n", level+1);
 
 		hepheastus(begin, upper, level + 1);
 		hepheastus(upper,   end, level + 1);

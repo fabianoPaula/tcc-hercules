@@ -87,13 +87,32 @@ for elem in data:
 	sd = sd + (elem - mean_data)*(elem - mean_data)
 	sd2 = sd2 + (elem - mean_data)*(elem - mean_data)/len(data)
 
+def mysqrt(number):
+	after = 0
+	s = number/2
+
+	while( np.abs(s - after) > 0.001):
+		print("Sqrt - 1: %f " % s)
+		after = s
+		s = (s + number/s)*0.5
+		print("Sqrt - 2: %f " % after)
+		print("Sqrt - 3: %f " % s)
+		print("Sqrt - 4: %f " % (s - after))
+	
+	print("Sqrt: %f" % s)
+	return s
+
+
 print("Mean: %f" % (np.mean(data)))
-print("Test: %f" % sd)
-print("Test: %f" % (sd2))
-print("Test: %f" % np.sqrt(sd/len(data)))
+print("Test: %f" % sd2)
+print("Test: %f" % mysqrt(sd2))
+print("Numpy: %f" % np.sqrt(sd2))
 print("StandardDesviation: %f" % (np.std(data)))
 print("p50: %f" % (p50))
 print("Skew: %f" % (sp.skew(data)))
+
+print("Test: %f" % mysqrt(2))
+# print("Test: %f" % np.sqrt(2))
 
 
 # plt.hist(data, bins=30)
