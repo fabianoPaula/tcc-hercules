@@ -203,7 +203,7 @@ void hepheastus(uint16_t begin, uint16_t end, uint16_t level){
 
 			// printf("Data[%u] = %u\n", i, value);
 			if (value != 0.0){
-				sprintf(message_buffer,"%s, %ld.%02u),(", message_buffer,
+				sprintf(message_buffer,"%s%ld.%02u,", message_buffer,
 					(long) value, (unsigned)((value-myfloor(value))*100)
 				);	
 			}
@@ -217,7 +217,7 @@ void hepheastus(uint16_t begin, uint16_t end, uint16_t level){
 		for(j = begin; j < samples_counter; j++)
 			value = value + samples[j]/number_of_elements;
 		
-		sprintf(message_buffer,"%s, %ld.%02u)", message_buffer, 
+		sprintf(message_buffer,"%s%ld.%02u)", message_buffer, 
 			(long) value, (unsigned)((value-myfloor(value))*100)
 		);
 		printf("%s\n", message_buffer);
