@@ -202,14 +202,12 @@ void hercules(){
 		value = discrete_mean(samples,begin, end);
 
 		// printf("Data[%u] = %u\n", i, value);
-		sprintf(message_buffer, "%s%u, %u.%u),(",
-		 message_buffer, i, value/100, value % 100);
+		sprintf(message_buffer, "%s%u.%u,",message_buffer, value/100, value % 100);
 		begin = end + 1;
 	}
 
 	value = discrete_mean(samples,begin, samples_counter);
-	sprintf(message_buffer, "%s%u, %u.%u)", 
-		message_buffer, i, value/100, value % 100);
+	sprintf(message_buffer, "%s%u.%u)",message_buffer, value/100, value % 100);
 	printf("%s\n", message_buffer);
 }
 
