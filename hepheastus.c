@@ -104,16 +104,20 @@ void skew_mean(float *x, uint16_t begin, uint16_t end, float *mean, float *skew)
 	*mean = mean_value;
 	*skew = 3*(mean_value - p50)/sd2;
 
+	if( *skew < 0){
+		*skew = *skew*-1;
+	}
+
 	// printf("Mean: ");
 	// printf_float(mean_value);
 	// printf("\n");
 
 	// printf("Sd: ");
-	// printf_float(sd);
+	// printf_float(sd2);
 	// printf("\n");
 
-	// printf("Sd2: ");
-	// printf_float(sd2);
+	// printf("p50: ");
+	// printf_float(p50);
 	// printf("\n");
 
 	// printf("SkewValue: ");
@@ -150,10 +154,16 @@ void hepheastus(uint16_t begin, uint16_t end, uint16_t level){
 		split_counter = 0;
 	}
 
+	if( level  == 3 ){
+		return;
+	}
+
 	skew_mean(samples, begin, end, &mean_value, &skew_value);
 	// kurtosis_value = kurtosis(samples, begin, end);
 
-	if( skew_value < 1.0){
+	// printf("Hepheastus: level %u - %u - %u\n", level, begin, end);
+
+	if( skew_value < 1.0 ){
 		// if( kurtosis_value < 0.26 ){
 		// 	printf("Leptokurtic Set! : ");
 		// }else{
@@ -165,10 +175,12 @@ void hepheastus(uint16_t begin, uint16_t end, uint16_t level){
 		upper = begin;
 		for(; samples[upper] < mean_value && upper < (end - 1); upper++);
 
-		// printf("Hepheastus; Next level %u\n", level+1);
+		// printf("Hepheastus; Next level %u \n", upper);
 
-		hepheastus(begin, upper, level + 1);
-		hepheastus(upper,   end, level + 1);
+		if( begin != upper && end != upper){
+			hepheastus(begin, upper, level + 1);
+			hepheastus(upper,   end, level + 1);
+		}
 	}
 
 	if( level == 0){
@@ -177,18 +189,25 @@ void hepheastus(uint16_t begin, uint16_t end, uint16_t level){
 		// Gerar as mensagens que serão enviadas para as aplicações
 		for(i = 0; i < split_counter; i++){
 			end = begin;
-			for(; samples[end] < split_points[i] && end < (samples_counter - 1); end++);
+			for(; samples[end] < split_points[i] && end < samples_counter; end++);
 
 			value = 0;
 			number_of_elements = end - begin;
 
-			for(j = begin; j < end; j++)
+			// printf("Hepheastus: %u - %u - %u\n", begin, end, number_of_elements);
+			for(j = begin; j < end; j++){
 				value = value + samples[i]/number_of_elements;
+				// printf_float(value);
+				// printf("\n");
+			}
 
 			// printf("Data[%u] = %u\n", i, value);
-			sprintf(message_buffer,"%s%u, %ld.%02u),(", message_buffer,  i,
-				(long) value, (unsigned)((value-myfloor(value))*100)
-			);
+			if (value != 0.0){
+				sprintf(message_buffer,"%s, %ld.%02u),(", message_buffer,
+					(long) value, (unsigned)((value-myfloor(value))*100)
+				);	
+			}
+			
 			begin = end + 1;
 		}
 
@@ -198,7 +217,7 @@ void hepheastus(uint16_t begin, uint16_t end, uint16_t level){
 		for(j = begin; j < samples_counter; j++)
 			value = value + samples[j]/number_of_elements;
 		
-		sprintf(message_buffer,"%s%u, %ld.%02u)", message_buffer, i, 
+		sprintf(message_buffer,"%s, %ld.%02u)", message_buffer, 
 			(long) value, (unsigned)((value-myfloor(value))*100)
 		);
 		printf("%s\n", message_buffer);
