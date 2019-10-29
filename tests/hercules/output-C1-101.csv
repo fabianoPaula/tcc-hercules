@@ -1,0 +1,398 @@
+00:00.848	ID:4	Rime started with address 193.12.0.0.0.0.0.4
+00:00.859	ID:4	MAC c1:0c:00:00:00:00:00:04 Contiki 2.7 started. Node id is set to 4.
+00:00.868	ID:4	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:00.880	ID:4	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0004
+00:00.885	ID:4	Starting 'Unicast sender example process'
+00:00.891	ID:4	IPv6 addresses: aaaa::c30c:0:0:4
+00:00.893	ID:4	fe80::c30c:0:0:4
+00:00.957	ID:7	Rime started with address 193.12.0.0.0.0.0.7
+00:00.968	ID:7	MAC c1:0c:00:00:00:00:00:07 Contiki 2.7 started. Node id is set to 7.
+00:00.977	ID:7	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:00.989	ID:7	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0007
+00:00.994	ID:7	Starting 'Unicast sender example process'
+00:01.000	ID:7	IPv6 addresses: aaaa::c30c:0:0:7
+00:01.002	ID:7	fe80::c30c:0:0:7
+00:01.069	ID:17	Rime started with address 193.12.0.0.0.0.0.17
+00:01.080	ID:17	MAC c1:0c:00:00:00:00:00:11 Contiki 2.7 started. Node id is set to 17.
+00:01.089	ID:17	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.102	ID:17	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0011
+00:01.106	ID:17	Starting 'Unicast sender example process'
+00:01.112	ID:17	IPv6 addresses: aaaa::c30c:0:0:11
+00:01.115	ID:17	fe80::c30c:0:0:11
+00:01.133	ID:1	Rime started with address 193.12.0.0.0.0.0.1
+00:01.144	ID:1	MAC c1:0c:00:00:00:00:00:01 Contiki 2.7 started. Node id is set to 1.
+00:01.152	ID:1	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.165	ID:1	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0001
+00:01.168	ID:1	Starting 'Hercules process'
+00:01.174	ID:1	IPv6 addresses: aaaa::c30c:0:0:1
+00:01.177	ID:1	fe80::c30c:0:0:1
+00:01.181	ID:1	Open collector window
+00:01.233	ID:12	Rime started with address 193.12.0.0.0.0.0.12
+00:01.244	ID:12	MAC c1:0c:00:00:00:00:00:0c Contiki 2.7 started. Node id is set to 12.
+00:01.253	ID:12	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.265	ID:12	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:000c
+00:01.270	ID:12	Starting 'Unicast sender example process'
+00:01.276	ID:12	IPv6 addresses: aaaa::c30c:0:0:c
+00:01.278	ID:12	fe80::c30c:0:0:c
+00:01.289	ID:9	Rime started with address 193.12.0.0.0.0.0.9
+00:01.292	ID:8	Rime started with address 193.12.0.0.0.0.0.8
+00:01.300	ID:9	MAC c1:0c:00:00:00:00:00:09 Contiki 2.7 started. Node id is set to 9.
+00:01.303	ID:8	MAC c1:0c:00:00:00:00:00:08 Contiki 2.7 started. Node id is set to 8.
+00:01.309	ID:9	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.312	ID:8	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.321	ID:9	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0009
+00:01.323	ID:19	Rime started with address 193.12.0.0.0.0.0.19
+00:01.324	ID:8	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0008
+00:01.324	ID:20	Rime started with address 193.12.0.0.0.0.0.20
+00:01.326	ID:9	Starting 'Unicast sender example process'
+00:01.329	ID:8	Starting 'Unicast sender example process'
+00:01.332	ID:9	IPv6 addresses: aaaa::c30c:0:0:9
+00:01.334	ID:19	MAC c1:0c:00:00:00:00:00:13 Contiki 2.7 started. Node id is set to 19.
+00:01.334	ID:9	fe80::c30c:0:0:9
+00:01.335	ID:8	IPv6 addresses: aaaa::c30c:0:0:8
+00:01.336	ID:20	MAC c1:0c:00:00:00:00:00:14 Contiki 2.7 started. Node id is set to 20.
+00:01.338	ID:8	fe80::c30c:0:0:8
+00:01.342	ID:19	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.344	ID:20	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.355	ID:19	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0013
+00:01.357	ID:20	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0014
+00:01.360	ID:19	Starting 'Unicast sender example process'
+00:01.362	ID:20	Starting 'Unicast sender example process'
+00:01.364	ID:18	Rime started with address 193.12.0.0.0.0.0.18
+00:01.366	ID:19	IPv6 addresses: aaaa::c30c:0:0:13
+00:01.368	ID:20	IPv6 addresses: aaaa::c30c:0:0:14
+00:01.369	ID:19	fe80::c30c:0:0:13
+00:01.370	ID:20	fe80::c30c:0:0:14
+00:01.375	ID:18	MAC c1:0c:00:00:00:00:00:12 Contiki 2.7 started. Node id is set to 18.
+00:01.383	ID:18	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.395	ID:10	Rime started with address 193.12.0.0.0.0.0.10
+00:01.396	ID:18	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0012
+00:01.401	ID:18	Starting 'Unicast sender example process'
+00:01.406	ID:10	MAC c1:0c:00:00:00:00:00:0a Contiki 2.7 started. Node id is set to 10.
+00:01.407	ID:18	IPv6 addresses: aaaa::c30c:0:0:12
+00:01.410	ID:18	fe80::c30c:0:0:12
+00:01.415	ID:10	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.427	ID:10	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:000a
+00:01.432	ID:10	Starting 'Unicast sender example process'
+00:01.438	ID:10	IPv6 addresses: aaaa::c30c:0:0:a
+00:01.441	ID:10	fe80::c30c:0:0:a
+00:01.458	ID:14	Rime started with address 193.12.0.0.0.0.0.14
+00:01.465	ID:11	Rime started with address 193.12.0.0.0.0.0.11
+00:01.469	ID:14	MAC c1:0c:00:00:00:00:00:0e Contiki 2.7 started. Node id is set to 14.
+00:01.476	ID:11	MAC c1:0c:00:00:00:00:00:0b Contiki 2.7 started. Node id is set to 11.
+00:01.477	ID:14	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.484	ID:11	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.490	ID:14	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:000e
+00:01.495	ID:14	Starting 'Unicast sender example process'
+00:01.497	ID:11	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:000b
+00:01.500	ID:14	IPv6 addresses: aaaa::c30c:0:0:e
+00:01.502	ID:11	Starting 'Unicast sender example process'
+00:01.503	ID:14	fe80::c30c:0:0:e
+00:01.507	ID:11	IPv6 addresses: aaaa::c30c:0:0:b
+00:01.510	ID:11	fe80::c30c:0:0:b
+00:01.545	ID:15	Rime started with address 193.12.0.0.0.0.0.15
+00:01.556	ID:15	MAC c1:0c:00:00:00:00:00:0f Contiki 2.7 started. Node id is set to 15.
+00:01.560	ID:6	Rime started with address 193.12.0.0.0.0.0.6
+00:01.563	ID:21	Rime started with address 193.12.0.0.0.0.0.21
+00:01.565	ID:15	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.571	ID:6	MAC c1:0c:00:00:00:00:00:06 Contiki 2.7 started. Node id is set to 6.
+00:01.574	ID:21	MAC c1:0c:00:00:00:00:00:15 Contiki 2.7 started. Node id is set to 21.
+00:01.577	ID:15	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:000f
+00:01.580	ID:6	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.582	ID:15	Starting 'Unicast sender example process'
+00:01.583	ID:21	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.588	ID:15	IPv6 addresses: aaaa::c30c:0:0:f
+00:01.591	ID:15	fe80::c30c:0:0:f
+00:01.592	ID:13	Rime started with address 193.12.0.0.0.0.0.13
+00:01.592	ID:6	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0006
+00:01.596	ID:21	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0015
+00:01.597	ID:6	Starting 'Unicast sender example process'
+00:01.600	ID:21	Starting 'Unicast sender example process'
+00:01.603	ID:13	MAC c1:0c:00:00:00:00:00:0d Contiki 2.7 started. Node id is set to 13.
+00:01.603	ID:6	IPv6 addresses: aaaa::c30c:0:0:6
+00:01.606	ID:6	fe80::c30c:0:0:6
+00:01.606	ID:21	IPv6 addresses: aaaa::c30c:0:0:15
+00:01.609	ID:21	fe80::c30c:0:0:15
+00:01.611	ID:13	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.620	ID:3	Rime started with address 193.12.0.0.0.0.0.3
+00:01.624	ID:13	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:000d
+00:01.629	ID:13	Starting 'Unicast sender example process'
+00:01.631	ID:3	MAC c1:0c:00:00:00:00:00:03 Contiki 2.7 started. Node id is set to 3.
+00:01.634	ID:13	IPv6 addresses: aaaa::c30c:0:0:d
+00:01.637	ID:13	fe80::c30c:0:0:d
+00:01.639	ID:3	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.652	ID:3	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0003
+00:01.657	ID:3	Starting 'Unicast sender example process'
+00:01.663	ID:3	IPv6 addresses: aaaa::c30c:0:0:3
+00:01.665	ID:3	fe80::c30c:0:0:3
+00:01.716	ID:16	Rime started with address 193.12.0.0.0.0.0.16
+00:01.727	ID:16	MAC c1:0c:00:00:00:00:00:10 Contiki 2.7 started. Node id is set to 16.
+00:01.735	ID:16	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.748	ID:16	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0010
+00:01.753	ID:16	Starting 'Unicast sender example process'
+00:01.753	ID:2	Rime started with address 193.12.0.0.0.0.0.2
+00:01.753	ID:5	Rime started with address 193.12.0.0.0.0.0.5
+00:01.759	ID:16	IPv6 addresses: aaaa::c30c:0:0:10
+00:01.762	ID:16	fe80::c30c:0:0:10
+00:01.764	ID:2	MAC c1:0c:00:00:00:00:00:02 Contiki 2.7 started. Node id is set to 2.
+00:01.764	ID:5	MAC c1:0c:00:00:00:00:00:05 Contiki 2.7 started. Node id is set to 5.
+00:01.773	ID:2	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.773	ID:5	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:01.785	ID:2	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0002
+00:01.785	ID:5	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0005
+00:01.790	ID:2	Starting 'Unicast sender example process'
+00:01.790	ID:5	Starting 'Unicast sender example process'
+00:01.796	ID:2	IPv6 addresses: aaaa::c30c:0:0:2
+00:01.796	ID:5	IPv6 addresses: aaaa::c30c:0:0:5
+00:01.798	ID:2	fe80::c30c:0:0:2
+00:01.799	ID:5	fe80::c30c:0:0:5
+01:01.176	ID:1	Close collector window
+01:01.178	ID:1	Open fusion window
+01:01.215	ID:1	H:(50.29,70.55,79.29,101.29,119.4,129.3)
+01:01.218	ID:1	Close fusion window
+01:01.220	ID:1	Open collector window
+02:01.176	ID:1	Close collector window
+02:01.179	ID:1	Open fusion window
+02:01.189	ID:1	H:(50.26,80.26,0.0,103.27)
+02:01.191	ID:1	Close fusion window
+02:01.194	ID:1	Open collector window
+03:01.176	ID:1	Close collector window
+03:01.178	ID:1	Open fusion window
+03:01.228	ID:1	H:(50.90,83.58,101.44,128.19)
+03:01.230	ID:1	Close fusion window
+03:01.233	ID:1	Open collector window
+04:01.176	ID:1	Close collector window
+04:01.179	ID:1	Open fusion window
+04:01.198	ID:1	H:(50.65,82.15,103.14,0.0,0.0)
+04:01.200	ID:1	Close fusion window
+04:01.203	ID:1	Open collector window
+05:01.176	ID:1	Close collector window
+05:01.178	ID:1	Open fusion window
+05:01.249	ID:1	H:(51.20,81.20,101.26,133.86)
+05:01.251	ID:1	Close fusion window
+05:01.254	ID:1	Open collector window
+06:01.176	ID:1	Close collector window
+06:01.179	ID:1	Open fusion window
+06:01.207	ID:1	H:(50.4,79.90,97.32,127.61)
+06:01.209	ID:1	Close fusion window
+06:01.212	ID:1	Open collector window
+07:01.176	ID:1	Close collector window
+07:01.178	ID:1	Open fusion window
+07:01.185	ID:1	H:(47.84,0.0,0.0)
+07:01.187	ID:1	Close fusion window
+07:01.190	ID:1	Open collector window
+08:01.176	ID:1	Close collector window
+08:01.179	ID:1	Open fusion window
+08:01.219	ID:1	H:(50.3,78.4,94.63,108.67)
+08:01.221	ID:1	Close fusion window
+08:01.224	ID:1	Open collector window
+09:01.176	ID:1	Close collector window
+09:01.178	ID:1	Open fusion window
+09:01.189	ID:1	H:(52.85,81.29,120.77)
+09:01.191	ID:1	Close fusion window
+09:01.194	ID:1	Open collector window
+10:01.176	ID:1	Close collector window
+10:01.179	ID:1	Open fusion window
+10:01.238	ID:1	H:(51.81,79.24,96.67,111.18,125.56)
+10:01.240	ID:1	Close fusion window
+10:01.243	ID:1	Open collector window
+11:01.176	ID:1	Close collector window
+11:01.178	ID:1	Open fusion window
+11:01.199	ID:1	H:(51.47,79.13,109.7,127.29)
+11:01.202	ID:1	Close fusion window
+11:01.204	ID:1	Open collector window
+12:01.176	ID:1	Close collector window
+12:01.179	ID:1	Open fusion window
+12:01.252	ID:1	H:(51.30,76.89,106.4,126.81)
+12:01.254	ID:1	Close fusion window
+12:01.257	ID:1	Open collector window
+13:01.176	ID:1	Close collector window
+13:01.178	ID:1	Open fusion window
+13:01.211	ID:1	H:(51.7,76.76,100.97,116.30,129.20)
+13:01.213	ID:1	Close fusion window
+13:01.215	ID:1	Open collector window
+14:01.176	ID:1	Close collector window
+14:01.179	ID:1	Open fusion window
+14:01.186	ID:1	H:(46.48,56.69,0.0)
+14:01.188	ID:1	Close fusion window
+14:01.191	ID:1	Open collector window
+15:01.176	ID:1	Close collector window
+15:01.178	ID:1	Open fusion window
+15:01.219	ID:1	H:(50.52,79.35,101.11,118.34,127.92)
+15:01.222	ID:1	Close fusion window
+15:01.224	ID:1	Open collector window
+16:01.176	ID:1	Close collector window
+16:01.179	ID:1	Open fusion window
+16:01.190	ID:1	H:(50.55,78.41,104.97,130.78)
+16:01.193	ID:1	Close fusion window
+16:01.195	ID:1	Open collector window
+17:01.176	ID:1	Close collector window
+17:01.178	ID:1	Open fusion window
+17:01.228	ID:1	H:(51.17,75.96,100.92,129.31)
+17:01.231	ID:1	Close fusion window
+17:01.233	ID:1	Open collector window
+18:01.176	ID:1	Close collector window
+18:01.179	ID:1	Open fusion window
+18:01.194	ID:1	H:(49.24,0.0,93.16,109.55,0.0)
+18:01.196	ID:1	Close fusion window
+18:01.199	ID:1	Open collector window
+19:01.176	ID:1	Close collector window
+19:01.178	ID:1	Open fusion window
+19:01.242	ID:1	H:(50.84,76.75,103.30,131.28)
+19:01.244	ID:1	Close fusion window
+19:01.247	ID:1	Open collector window
+20:01.176	ID:1	Close collector window
+20:01.179	ID:1	Open fusion window
+20:01.202	ID:1	H:(50.61,79.72,96.95,113.46,0.0)
+20:01.205	ID:1	Close fusion window
+20:01.207	ID:1	Open collector window
+21:01.176	ID:1	Close collector window
+21:01.178	ID:1	Open fusion window
+21:01.261	ID:1	H:(50.41,78.30,97.57,111.82,130.49)
+21:01.263	ID:1	Close fusion window
+21:01.266	ID:1	Open collector window
+22:01.176	ID:1	Close collector window
+22:01.179	ID:1	Open fusion window
+22:01.213	ID:1	H:(50.64,76.16,85.18,99.4,126.91)
+22:01.215	ID:1	Close fusion window
+22:01.217	ID:1	Open collector window
+23:01.176	ID:1	Close collector window
+23:01.178	ID:1	Open fusion window
+23:01.185	ID:1	H:(48.96,0.0,0.0)
+23:01.188	ID:1	Close fusion window
+23:01.190	ID:1	Open collector window
+24:01.176	ID:1	Close collector window
+24:01.179	ID:1	Open fusion window
+24:01.219	ID:1	H:(51.14,70.56,95.97,125.84)
+24:01.222	ID:1	Close fusion window
+24:01.224	ID:1	Open collector window
+25:01.176	ID:1	Close collector window
+25:01.178	ID:1	Open fusion window
+25:01.191	ID:1	H:(50.29,76.71,102.76,130.78)
+25:01.193	ID:1	Close fusion window
+25:01.196	ID:1	Open collector window
+26:01.176	ID:1	Close collector window
+26:01.179	ID:1	Open fusion window
+26:01.232	ID:1	H:(50.33,78.39,100.28,131.30)
+26:01.235	ID:1	Close fusion window
+26:01.237	ID:1	Open collector window
+27:01.176	ID:1	Close collector window
+27:01.179	ID:1	Open fusion window
+27:01.198	ID:1	H:(49.45,72.87,83.88,98.84,120.46)
+27:01.200	ID:1	Close fusion window
+27:01.203	ID:1	Open collector window
+28:01.176	ID:1	Close collector window
+28:01.179	ID:1	Open fusion window
+28:01.251	ID:1	H:(50.13,71.66,82.73,97.71,111.16,122.82)
+28:01.253	ID:1	Close fusion window
+28:01.256	ID:1	Open collector window
+29:01.176	ID:1	Close collector window
+29:01.178	ID:1	Open fusion window
+29:01.205	ID:1	H:(50.24,77.17,95.87,105.9,125.41)
+29:01.207	ID:1	Close fusion window
+29:01.210	ID:1	Open collector window
+30:01.176	ID:1	Close collector window
+30:01.179	ID:1	Open fusion window
+30:01.265	ID:1	H:(49.72,76.53,97.65,114.44,126.48)
+30:01.268	ID:1	Close fusion window
+30:01.271	ID:1	Open collector window
+31:01.176	ID:1	Close collector window
+31:01.178	ID:1	Open fusion window
+31:01.216	ID:1	H:(50.71,76.81,94.7,104.71,128.6)
+31:01.218	ID:1	Close fusion window
+31:01.220	ID:1	Open collector window
+32:01.176	ID:1	Close collector window
+32:01.179	ID:1	Open fusion window
+32:01.189	ID:1	H:(47.75,77.31,94.64,101.53)
+32:01.191	ID:1	Close fusion window
+32:01.194	ID:1	Open collector window
+33:01.176	ID:1	Close collector window
+33:01.178	ID:1	Open fusion window
+33:01.229	ID:1	H:(49.61,75.46,93.86,105.10,129.90)
+33:01.232	ID:1	Close fusion window
+33:01.234	ID:1	Open collector window
+34:01.176	ID:1	Close collector window
+34:01.179	ID:1	Open fusion window
+34:01.194	ID:1	H:(51.13,76.7,101.65,129.51)
+34:01.196	ID:1	Close fusion window
+34:01.198	ID:1	Open collector window
+35:01.176	ID:1	Close collector window
+35:01.178	ID:1	Open fusion window
+35:01.243	ID:1	H:(50.92,74.88,100.43,130.84)
+35:01.245	ID:1	Close fusion window
+35:01.247	ID:1	Open collector window
+36:01.176	ID:1	Close collector window
+36:01.179	ID:1	Open fusion window
+36:01.201	ID:1	H:(50.11,74.79,99.49,0.0)
+36:01.203	ID:1	Close fusion window
+36:01.206	ID:1	Open collector window
+37:01.176	ID:1	Close collector window
+37:01.178	ID:1	Open fusion window
+37:01.260	ID:1	H:(50.5,76.32,100.72,130.23)
+37:01.263	ID:1	Close fusion window
+37:01.265	ID:1	Open collector window
+38:01.176	ID:1	Close collector window
+38:01.179	ID:1	Open fusion window
+38:01.214	ID:1	H:(49.81,74.2,92.26,108.46,133.25)
+38:01.216	ID:1	Close fusion window
+38:01.219	ID:1	Open collector window
+39:01.176	ID:1	Close collector window
+39:01.178	ID:1	Open fusion window
+39:01.189	ID:1	H:(49.27,77.41,95.32,104.81)
+39:01.191	ID:1	Close fusion window
+39:01.194	ID:1	Open collector window
+40:01.176	ID:1	Close collector window
+40:01.179	ID:1	Open fusion window
+40:01.226	ID:1	H:(50.65,78.5,101.87,131.38)
+40:01.228	ID:1	Close fusion window
+40:01.230	ID:1	Open collector window
+41:01.176	ID:1	Close collector window
+41:01.178	ID:1	Open fusion window
+41:01.196	ID:1	H:(50.75,65.58,74.57,91.3,107.53,0.0)
+41:01.199	ID:1	Close fusion window
+41:01.201	ID:1	Open collector window
+42:01.176	ID:1	Close collector window
+42:01.179	ID:1	Open fusion window
+42:01.241	ID:1	H:(49.92,76.58,95.77,108.43,138.90)
+42:01.243	ID:1	Close fusion window
+42:01.246	ID:1	Open collector window
+43:01.176	ID:1	Close collector window
+43:01.178	ID:1	Open fusion window
+43:01.198	ID:1	H:(45.87,53.72,95.4,122.63)
+43:01.201	ID:1	Close fusion window
+43:01.203	ID:1	Open collector window
+44:01.176	ID:1	Close collector window
+44:01.179	ID:1	Open fusion window
+44:01.258	ID:1	H:(50.83,76.82,96.38,109.90,123.78,0.0)
+44:01.261	ID:1	Close fusion window
+44:01.263	ID:1	Open collector window
+45:01.176	ID:1	Close collector window
+45:01.178	ID:1	Open fusion window
+45:01.209	ID:1	H:(50.12,76.46,99.57,125.89,0.0)
+45:01.212	ID:1	Close fusion window
+45:01.214	ID:1	Open collector window
+46:01.176	ID:1	Close collector window
+46:01.179	ID:1	Open fusion window
+46:01.187	ID:1	H:(44.12,0.0,0.0,138.90)
+46:01.189	ID:1	Close fusion window
+46:01.192	ID:1	Open collector window
+47:01.176	ID:1	Close collector window
+47:01.178	ID:1	Open fusion window
+47:01.220	ID:1	H:(50.1,77.59,97.1,127.27)
+47:01.222	ID:1	Close fusion window
+47:01.225	ID:1	Open collector window
+48:01.176	ID:1	Close collector window
+48:01.179	ID:1	Open fusion window
+48:01.191	ID:1	H:(50.7,78.81,103.54,139.81)
+48:01.194	ID:1	Close fusion window
+48:01.196	ID:1	Open collector window
+49:01.176	ID:1	Close collector window
+49:01.178	ID:1	Open fusion window
+49:01.236	ID:1	H:(50.62,79.28,102.75,139.51)
+49:01.238	ID:1	Close fusion window
+49:01.241	ID:1	Open collector window
+50:01.176	ID:1	Close collector window
+50:01.179	ID:1	Open fusion window
+50:01.198	ID:1	H:(48.71,74.53,96.41,112.88,0.0)
+50:01.201	ID:1	Close fusion window
+50:01.203	ID:1	Open collector window
