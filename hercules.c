@@ -13,7 +13,7 @@
 #include "net/rpl/rpl.h"
 
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 
 #define UDP_PORT 1234
 #define SERVICE_ID 190
@@ -286,7 +286,7 @@ static void create_rpl_dag(uip_ipaddr_t *ipaddr){
 PROCESS_THREAD(unicast_receiver_process, ev, data){
   static struct etimer periodic_timer;
   uip_ipaddr_t *ipaddr;
-  uint16_t counter = 0;
+  // uint16_t counter = 0;
 
   PROCESS_BEGIN();
 
