@@ -8,7 +8,7 @@
 
 #include "simple-udp.h"
 #include "servreg-hack.h"
-// #include "powertrace.h"
+#include "powertrace.h"
 
 #include "net/rpl/rpl.h"
 
@@ -19,7 +19,7 @@
 #define SERVICE_ID 190
 
 #define SEND_INTERVAL	(60 * CLOCK_SECOND)
-#define POWERTRACE_INTERVAL (2 * CLOCK_SECOND)
+#define POWERTRACE_INTERVAL (60 * CLOCK_SECOND)
 
 #define NUMBER_OF_SAMPLES 200
 #define NUMBER_OF_BINS 30
@@ -291,7 +291,7 @@ PROCESS_THREAD(unicast_receiver_process, ev, data){
   PROCESS_BEGIN();
 
   // Iniciando o powertrace
-  // powertrace_start(POWERTRACE_INTERVAL);
+  powertrace_start(POWERTRACE_INTERVAL);
 
   // Iniciando o serviço de rede
   servreg_hack_init();
@@ -302,26 +302,26 @@ PROCESS_THREAD(unicast_receiver_process, ev, data){
   // Iniciando o temporizador
   etimer_set(&periodic_timer, SEND_INTERVAL);
 
-  printf("Open collector window\n");
-  while(counter < 30) {
+  // printf("Open collector window\n");
+  while(1) {
 	// PROCESS_WAIT_EVENT();
 	PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
 
-	printf("Close collector window\n");
-	printf("Open fusion window\n");
+	// printf("Close collector window\n");
+	// printf("Open fusion window\n");
 	locked = 1;
 
 	hercules();
 
-	printf("Close fusion window\n");
-	counter = counter + 1;
+	// printf("Close fusion window\n");
+	// counter = counter + 1;
 	locked = 0;
-	printf("Open collector window\n");
+	// printf("Open collector window\n");
 
 	etimer_reset(&periodic_timer);    
   }
 
-  printf("End of process\n");
+  // printf("End of process\n");
   PROCESS_END();
 }
 /*---------------------------------------------------------------------------*/

@@ -13,12 +13,13 @@
 #include "net/rpl/rpl.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #define UDP_PORT 1234
 #define SERVICE_ID 190
 
-#define SEND_INTERVAL	(60 * CLOCK_SECOND)
-#define POWERTRACE_INTERVAL (2 * CLOCK_SECOND)
+#define SEND_INTERVAL	(30 * CLOCK_SECOND)
+#define POWERTRACE_INTERVAL (30 * CLOCK_SECOND)
 
 #define NUMBER_OF_SAMPLES 200
 #define NUMBER_OF_SPLIT_POINTS 10
@@ -44,9 +45,9 @@ float myfloor(float x) {
   }
 }
 
-void printf_float(float number){
-	printf("%ld.%02u", (long) number, (unsigned)((number-myfloor(number))*100));
-}
+// void printf_float(float number){
+// 	printf("%ld.%02u", (long) number, (unsigned)((number-myfloor(number))*100));
+// }
 
 float mysqrt(float number) {
 	float dist = 100, before = 0;
@@ -127,7 +128,8 @@ void skew_mean(float *x, uint16_t begin, uint16_t end, float *mean, float *skew)
 
 void hepheastus(uint16_t begin, uint16_t end, uint16_t level){
 	uint16_t i, j, number_of_elements, upper;
-	float skew_value, kurtosis_value, mean_value, value;
+	float skew_value, mean_value, value;
+  // float kurtosis_value;
 
 	if( level == 0) {
 		// for(i = 0; i < samples_counter; i++){
@@ -147,10 +149,10 @@ void hepheastus(uint16_t begin, uint16_t end, uint16_t level){
 		}
 		// printf("Ordenado !!!\n");
 
-		for(i = 0; i < samples_counter; i++){
-			printf_float(samples[i]);
-			printf(",\n");
-		}
+		// for(i = 0; i < samples_counter; i++){
+		// 	printf_float(samples[i]);
+		// 	printf(",\n");
+		// }
 		split_counter = 0;
 	}
 
@@ -302,11 +304,11 @@ static void create_rpl_dag(uip_ipaddr_t *ipaddr) {
 PROCESS_THREAD(unicast_receiver_process, ev, data){
   static struct etimer periodic_timer;
   uip_ipaddr_t *ipaddr;
-  static uint16_t counter = 0;
+  // static uint16_t counter = 0;
 
   PROCESS_BEGIN();
   // Iniciando o powertrace
-  // powertrace_start(POWERTRACE_INTERVAL);
+  powertrace_start(POWERTRACE_INTERVAL);
 
   // Iniciando o serviço de rede
   servreg_hack_init();
@@ -318,7 +320,7 @@ PROCESS_THREAD(unicast_receiver_process, ev, data){
   // Iniciando o temporizador
   etimer_set(&periodic_timer, SEND_INTERVAL);
   // printf("Open collector window\n");
-  while(counter < 30) {
+  while(1) {
 	// PROCESS_WAIT_EVENT();
 	PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
 
@@ -326,11 +328,11 @@ PROCESS_THREAD(unicast_receiver_process, ev, data){
 	// printf("Open fusion window\n");
 	locked = 1;
 
-	printf("Round: %u\n", counter);
+	// printf("Round: %u\n", counter);
 	hepheastus(0, samples_counter, 0);
 
 	// printf("Close fusion window\n");
-	counter = counter + 1;
+	// counter = counter + 1;
 	locked = 0;
 
 	// printf("Open collector window\n");
@@ -338,7 +340,7 @@ PROCESS_THREAD(unicast_receiver_process, ev, data){
 	etimer_reset(&periodic_timer);    
   }
 
-  printf("End of process\n");
+  // printf("End of process\n");
   PROCESS_END();
 }
 /*---------------------------------------------------------------------------*/
