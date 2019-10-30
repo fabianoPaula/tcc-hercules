@@ -1,0 +1,267 @@
+00:02.695	ID:2	Rime started with address 193.12.0.0.0.0.0.2
+00:02.708	ID:2	MAC c1:0c:00:00:00:00:00:02 Contiki-3.0 started. Node id is set to 2.
+00:02.718	ID:2	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:02.734	ID:2	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0002
+00:02.740	ID:2	Starting 'Unicast sender example process'
+00:02.747	ID:2	IPv6 addresses: aaaa::c30c:0:0:2
+00:02.750	ID:2	fe80::c30c:0:0:2
+00:02.804	ID:1	Rime started with address 193.12.0.0.0.0.0.1
+00:02.817	ID:1	MAC c1:0c:00:00:00:00:00:01 Contiki-3.0 started. Node id is set to 1.
+00:02.827	ID:1	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:02.828	ID:7	Rime started with address 193.12.0.0.0.0.0.7
+00:02.841	ID:7	MAC c1:0c:00:00:00:00:00:07 Contiki-3.0 started. Node id is set to 7.
+00:02.842	ID:18	Rime started with address 193.12.0.0.0.0.0.18
+00:02.843	ID:1	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0001
+00:02.847	ID:1	Starting 'Hepheastus process'
+00:02.851	ID:7	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:02.854	ID:1	IPv6 addresses: aaaa::c30c:0:0:1
+00:02.855	ID:20	Rime started with address 193.12.0.0.0.0.0.20
+00:02.855	ID:18	MAC c1:0c:00:00:00:00:00:12 Contiki-3.0 started. Node id is set to 18.
+00:02.858	ID:1	fe80::c30c:0:0:1
+00:02.866	ID:18	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:02.867	ID:7	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0007
+00:02.868	ID:20	MAC c1:0c:00:00:00:00:00:14 Contiki-3.0 started. Node id is set to 20.
+00:02.873	ID:7	Starting 'Unicast sender example process'
+00:02.878	ID:20	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:02.880	ID:7	IPv6 addresses: aaaa::c30c:0:0:7
+00:02.881	ID:18	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0012
+00:02.883	ID:7	fe80::c30c:0:0:7
+00:02.887	ID:18	Starting 'Unicast sender example process'
+00:02.888	ID:19	Rime started with address 193.12.0.0.0.0.0.19
+00:02.894	ID:20	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0014
+00:02.895	ID:18	IPv6 addresses: aaaa::c30c:0:0:12
+00:02.898	ID:18	fe80::c30c:0:0:12
+00:02.900	ID:20	Starting 'Unicast sender example process'
+00:02.902	ID:19	MAC c1:0c:00:00:00:00:00:13 Contiki-3.0 started. Node id is set to 19.
+00:02.907	ID:20	IPv6 addresses: aaaa::c30c:0:0:14
+00:02.911	ID:20	fe80::c30c:0:0:14
+00:02.912	ID:19	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:02.927	ID:19	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0013
+00:02.933	ID:19	Starting 'Unicast sender example process'
+00:02.941	ID:19	IPv6 addresses: aaaa::c30c:0:0:13
+00:02.944	ID:19	fe80::c30c:0:0:13
+00:03.068	ID:10	Rime started with address 193.12.0.0.0.0.0.10
+00:03.082	ID:10	MAC c1:0c:00:00:00:00:00:0a Contiki-3.0 started. Node id is set to 10.
+00:03.087	ID:6	Rime started with address 193.12.0.0.0.0.0.6
+00:03.092	ID:10	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:03.100	ID:6	MAC c1:0c:00:00:00:00:00:06 Contiki-3.0 started. Node id is set to 6.
+00:03.108	ID:10	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:000a
+00:03.110	ID:6	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:03.114	ID:10	Starting 'Unicast sender example process'
+00:03.121	ID:10	IPv6 addresses: aaaa::c30c:0:0:a
+00:03.124	ID:10	fe80::c30c:0:0:a
+00:03.126	ID:6	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0006
+00:03.132	ID:6	Starting 'Unicast sender example process'
+00:03.139	ID:6	IPv6 addresses: aaaa::c30c:0:0:6
+00:03.142	ID:6	fe80::c30c:0:0:6
+00:03.143	ID:11	Rime started with address 193.12.0.0.0.0.0.11
+00:03.153	ID:8	Rime started with address 193.12.0.0.0.0.0.8
+00:03.157	ID:11	MAC c1:0c:00:00:00:00:00:0b Contiki-3.0 started. Node id is set to 11.
+00:03.166	ID:8	MAC c1:0c:00:00:00:00:00:08 Contiki-3.0 started. Node id is set to 8.
+00:03.167	ID:11	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:03.174	ID:12	Rime started with address 193.12.0.0.0.0.0.12
+00:03.176	ID:8	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:03.183	ID:11	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:000b
+00:03.188	ID:12	MAC c1:0c:00:00:00:00:00:0c Contiki-3.0 started. Node id is set to 12.
+00:03.189	ID:11	Starting 'Unicast sender example process'
+00:03.192	ID:8	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0008
+00:03.196	ID:11	IPv6 addresses: aaaa::c30c:0:0:b
+00:03.198	ID:8	Starting 'Unicast sender example process'
+00:03.198	ID:12	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:03.199	ID:11	fe80::c30c:0:0:b
+00:03.200	ID:21	Rime started with address 193.12.0.0.0.0.0.21
+00:03.205	ID:8	IPv6 addresses: aaaa::c30c:0:0:8
+00:03.209	ID:8	fe80::c30c:0:0:8
+00:03.214	ID:21	MAC c1:0c:00:00:00:00:00:15 Contiki-3.0 started. Node id is set to 21.
+00:03.214	ID:12	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:000c
+00:03.220	ID:12	Starting 'Unicast sender example process'
+00:03.224	ID:21	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:03.227	ID:12	IPv6 addresses: aaaa::c30c:0:0:c
+00:03.230	ID:12	fe80::c30c:0:0:c
+00:03.234	ID:16	Rime started with address 193.12.0.0.0.0.0.16
+00:03.240	ID:21	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0015
+00:03.246	ID:21	Starting 'Unicast sender example process'
+00:03.247	ID:16	MAC c1:0c:00:00:00:00:00:10 Contiki-3.0 started. Node id is set to 16.
+00:03.253	ID:21	IPv6 addresses: aaaa::c30c:0:0:15
+00:03.257	ID:21	fe80::c30c:0:0:15
+00:03.258	ID:16	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:03.260	ID:14	Rime started with address 193.12.0.0.0.0.0.14
+00:03.273	ID:16	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0010
+00:03.274	ID:14	MAC c1:0c:00:00:00:00:00:0e Contiki-3.0 started. Node id is set to 14.
+00:03.279	ID:16	Starting 'Unicast sender example process'
+00:03.284	ID:14	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:03.287	ID:16	IPv6 addresses: aaaa::c30c:0:0:10
+00:03.290	ID:16	fe80::c30c:0:0:10
+00:03.292	ID:15	Rime started with address 193.12.0.0.0.0.0.15
+00:03.299	ID:14	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:000e
+00:03.305	ID:14	Starting 'Unicast sender example process'
+00:03.305	ID:15	MAC c1:0c:00:00:00:00:00:0f Contiki-3.0 started. Node id is set to 15.
+00:03.313	ID:14	IPv6 addresses: aaaa::c30c:0:0:e
+00:03.316	ID:15	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:03.316	ID:14	fe80::c30c:0:0:e
+00:03.331	ID:15	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:000f
+00:03.333	ID:9	Rime started with address 193.12.0.0.0.0.0.9
+00:03.337	ID:15	Starting 'Unicast sender example process'
+00:03.344	ID:15	IPv6 addresses: aaaa::c30c:0:0:f
+00:03.346	ID:9	MAC c1:0c:00:00:00:00:00:09 Contiki-3.0 started. Node id is set to 9.
+00:03.348	ID:15	fe80::c30c:0:0:f
+00:03.356	ID:9	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:03.372	ID:9	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0009
+00:03.378	ID:9	Starting 'Unicast sender example process'
+00:03.385	ID:9	IPv6 addresses: aaaa::c30c:0:0:9
+00:03.389	ID:9	fe80::c30c:0:0:9
+00:03.517	ID:3	Rime started with address 193.12.0.0.0.0.0.3
+00:03.531	ID:3	MAC c1:0c:00:00:00:00:00:03 Contiki-3.0 started. Node id is set to 3.
+00:03.541	ID:3	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:03.556	ID:3	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0003
+00:03.562	ID:3	Starting 'Unicast sender example process'
+00:03.569	ID:3	IPv6 addresses: aaaa::c30c:0:0:3
+00:03.573	ID:3	fe80::c30c:0:0:3
+00:03.592	ID:5	Rime started with address 193.12.0.0.0.0.0.5
+00:03.592	ID:17	Rime started with address 193.12.0.0.0.0.0.17
+00:03.598	ID:4	Rime started with address 193.12.0.0.0.0.0.4
+00:03.605	ID:5	MAC c1:0c:00:00:00:00:00:05 Contiki-3.0 started. Node id is set to 5.
+00:03.606	ID:17	MAC c1:0c:00:00:00:00:00:11 Contiki-3.0 started. Node id is set to 17.
+00:03.612	ID:4	MAC c1:0c:00:00:00:00:00:04 Contiki-3.0 started. Node id is set to 4.
+00:03.615	ID:5	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:03.616	ID:17	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:03.622	ID:4	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:03.631	ID:5	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0005
+00:03.632	ID:17	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0011
+00:03.637	ID:5	Starting 'Unicast sender example process'
+00:03.637	ID:4	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:0004
+00:03.638	ID:17	Starting 'Unicast sender example process'
+00:03.639	ID:13	Rime started with address 193.12.0.0.0.0.0.13
+00:03.643	ID:4	Starting 'Unicast sender example process'
+00:03.644	ID:5	IPv6 addresses: aaaa::c30c:0:0:5
+00:03.645	ID:17	IPv6 addresses: aaaa::c30c:0:0:11
+00:03.647	ID:5	fe80::c30c:0:0:5
+00:03.649	ID:17	fe80::c30c:0:0:11
+00:03.650	ID:4	IPv6 addresses: aaaa::c30c:0:0:4
+00:03.652	ID:13	MAC c1:0c:00:00:00:00:00:0d Contiki-3.0 started. Node id is set to 13.
+00:03.654	ID:4	fe80::c30c:0:0:4
+00:03.663	ID:13	CSMA ContikiMAC, channel check rate 8 Hz, radio channel 26
+00:03.678	ID:13	Tentative link-local IPv6 address fe80:0000:0000:0000:c30c:0000:0000:000d
+00:03.684	ID:13	Starting 'Unicast sender example process'
+00:03.691	ID:13	IPv6 addresses: aaaa::c30c:0:0:d
+00:03.695	ID:13	fe80::c30c:0:0:d
+01:02.879	ID:1	 3943 P 193.12 0 53627 928875 12177 30001 0 0 53627 928875 12177 30001 0 0 (radio 4.29% / 4.29% tx 1.23% / 1.23% listen 3.05% / 3.05%)
+01:03.053	ID:1	He:(42.82,88.22)
+02:02.880	ID:1	 7783 P 193.12 1 96454 1868478 16270 57348 0 0 42826 939603 4093 27347 0 0 (radio 3.74% / 3.20% tx 0.82% / 0.41% listen 2.91% / 2.78%)
+02:03.216	ID:1	He:(71.63)
+03:02.881	ID:1	 11623 P 193.12 2 139572 2807798 20339 79021 0 0 43116 939320 4069 21673 0 0 (radio 3.37% / 2.62% tx 0.69% / 0.41% listen 2.68% / 2.20%)
+03:03.314	ID:1	He:(40.25,98.69)
+04:02.881	ID:1	 15463 P 193.12 3 181847 3747966 24443 96892 0 0 42273 940168 4104 17871 0 0 (radio 3.08% / 2.23% tx 0.62% / 0.41% listen 2.46% / 1.81%)
+04:03.337	ID:1	He:(43.03,95.89)
+05:02.881	ID:1	 19303 P 193.12 4 225018 4687479 28544 114123 0 0 43170 939513 4101 17231 0 0 (radio 2.90% / 2.17% tx 0.58% / 0.41% listen 2.32% / 1.75%)
+05:03.367	ID:1	He:(41.86,92.28)
+06:02.880	ID:1	 23143 P 193.12 5 257052 5638129 28544 128256 0 0 32033 950650 0 14133 0 0 (radio 2.65% / 1.43% tx 0.48% / 0.00% listen 2.17% / 1.43%)
+06:03.333	ID:1	He:(40.61,94.22)
+07:02.879	ID:1	 26983 P 193.12 6 288086 6589780 28544 141778 0 0 31032 951651 0 13522 0 0 (radio 2.47% / 1.37% tx 0.41% / 0.00% listen 2.06% / 1.37%)
+07:03.322	ID:1	He:(40.26,92.34)
+08:02.881	ID:1	 30823 P 193.12 7 324815 7535635 30920 162083 0 0 36727 945855 2376 20305 0 0 (radio 2.45% / 2.30% tx 0.39% / 0.24% listen 2.06% / 2.06%)
+08:03.313	ID:1	He:(40.61,92.95)
+09:02.881	ID:1	 34663 P 193.12 8 372719 8470400 37392 184000 0 0 47903 934765 6472 21917 0 0 (radio 2.50% / 2.88% tx 0.42% / 0.65% listen 2.08% / 2.23%)
+09:03.358	ID:1	He:(40.25,100.56)
+10:02.879	ID:1	 38503 P 193.12 9 404323 9421249 37392 201026 0 0 31602 950849 0 17026 0 0 (radio 2.42% / 1.73% tx 0.38% / 0.00% listen 2.04% / 1.73%)
+10:03.324	ID:1	He:(39.35,87.68)
+11:02.882	ID:1	 42343 P 193.12 10 444738 10363300 41487 213489 0 0 40414 942051 4095 12463 0 0 (radio 2.35% / 1.68% tx 0.38% / 0.41% listen 1.97% / 1.26%)
+11:03.337	ID:1	He:(40.25,89.65)
+12:02.880	ID:1	 46183 P 193.12 11 475029 11315701 41487 229203 0 0 30289 952401 0 15714 0 0 (radio 2.29% / 1.59% tx 0.35% / 0.00% listen 1.94% / 1.59%)
+12:03.334	ID:1	He:(41.45,89.91)
+13:02.880	ID:1	 50023 P 193.12 12 506732 12266681 41487 241466 0 0 31701 950980 0 12263 0 0 (radio 2.21% / 1.24% tx 0.32% / 0.00% listen 1.89% / 1.24%)
+13:03.334	ID:1	He:(40.25,97.09)
+14:02.880	ID:1	 53863 P 193.12 13 538425 13217674 41487 258333 0 0 31692 950993 0 16867 0 0 (radio 2.17% / 1.71% tx 0.30% / 0.00% listen 1.87% / 1.71%)
+14:03.355	ID:1	He:(40.26,99.47)
+15:02.880	ID:1	 57703 P 193.12 14 569961 14168825 41487 275857 0 0 31534 951151 0 17524 0 0 (radio 2.15% / 1.78% tx 0.28% / 0.00% listen 1.87% / 1.78%)
+15:03.326	ID:1	He:(39.36,98.04)
+16:02.882	ID:1	 61543 P 193.12 15 617168 15104278 47955 295463 0 0 47206 935453 6468 19606 0 0 (radio 2.18% / 2.65% tx 0.30% / 0.65% listen 1.87% / 1.99%)
+16:03.348	ID:1	He:(40.25,90.29)
+17:02.882	ID:1	 65383 P 193.12 16 654351 16049781 50002 312188 0 0 37181 945503 2047 16725 0 0 (radio 2.16% / 1.91% tx 0.29% / 0.20% listen 1.86% / 1.70%)
+17:03.317	ID:1	He:(40.26,89.29)
+18:02.882	ID:1	 69223 P 193.12 17 700941 16985873 56164 329984 0 0 46589 936092 6162 17796 0 0 (radio 2.18% / 2.43% tx 0.31% / 0.62% listen 1.86% / 1.81%)
+18:03.359	ID:1	He:(45.23,100.78)
+19:02.882	ID:1	 73063 P 193.12 18 741725 17927740 60577 342875 0 0 40783 941867 4413 12891 0 0 (radio 2.16% / 1.76% tx 0.32% / 0.44% listen 1.83% / 1.31%)
+19:03.350	ID:1	He:(41.86,103.38)
+20:02.882	ID:1	 76903 P 193.12 19 777073 18875067 62629 354177 0 0 35347 947327 2052 11302 0 0 (radio 2.12% / 1.35% tx 0.31% / 0.20% listen 1.80% / 1.15%)
+20:03.347	ID:1	He:(40.26,87.79)
+21:02.883	ID:1	 80743 P 193.12 20 848325 19786501 81380 382473 0 0 71251 911434 18751 28296 0 0 (radio 2.-184% / 4.78% tx 0.39% / 1.90% listen 1.85% / 2.87%)
+21:03.329	ID:1	He:(40.61,91.39)
+22:02.882	ID:1	 84583 P 193.12 21 888073 20729397 85804 397100 0 0 39747 942896 4424 14627 0 0 (radio 2.-176% / 1.93% tx 0.39% / 0.45% listen 1.83% / 1.48%)
+22:03.368	ID:1	He:(40.61,96.79)
+23:02.882	ID:1	 88423 P 193.12 22 924245 21675811 87851 411100 0 0 36171 946414 2047 14000 0 0 (radio 2.-170% / 1.63% tx 0.38% / 0.20% listen 1.81% / 1.42%)
+23:03.404	ID:1	He:(44.45,45.01,113.11)
+24:02.882	ID:1	 92263 P 193.12 23 960914 22621743 89877 423384 0 0 36667 945932 2026 12284 0 0 (radio 2.-165% / 1.45% tx 0.38% / 0.20% listen 1.79% / 1.25%)
+24:03.359	ID:1	He:(39.35,98.61)
+25:02.882	ID:1	 96103 P 193.12 24 996253 23569067 92252 435592 0 0 35337 947324 2375 12208 0 0 (radio 2.-160% / 1.48% tx 0.37% / 0.24% listen 1.-98% / 1.24%)
+25:03.349	ID:1	He:(40.61,102.03)
+26:02.881	ID:1	 99943 P 193.12 25 1026615 24521356 92252 448729 0 0 30360 952289 0 13137 0 0 (radio 2.-157% / 1.33% tx 0.36% / 0.00% listen 1.-93% / 1.33%)
+26:03.416	ID:1	He:(40.61,40.61,44.24,124.29)
+27:02.882	ID:1	 103783 P 193.12 26 1058355 25472270 92252 462831 0 0 31739 950914 0 14102 0 0 (radio 2.-153% / 1.43% tx 0.34% / 0.00% listen 1.-88% / 1.43%)
+27:03.338	ID:1	He:(40.61,100.57)
+28:02.882	ID:1	 107623 P 193.12 27 1088650 26424631 92252 479461 0 0 30293 952361 0 16630 0 0 (radio 2.-149% / 1.69% tx 0.33% / 0.00% listen 1.-82% / 1.69%)
+28:03.318	ID:1	He:(39.36,99.64)
+29:02.883	ID:1	 111463 P 193.12 28 1129611 27366273 96355 502999 0 0 40959 941642 4103 23538 0 0 (radio 2.-141% / 2.81% tx 0.33% / 0.41% listen 1.-75% / 2.39%)
+29:03.360	ID:1	He:(44.23,101.04)
+30:02.883	ID:1	 115303 P 193.12 29 1163427 28314915 97603 524220 0 0 33814 948642 1248 21221 0 0 (radio 2.-135% / 2.28% tx 0.33% / 0.12% listen 1.-68% / 2.15%)
+30:03.360	ID:1	He:(39.36,100.19)
+31:02.883	ID:1	 119143 P 193.12 30 1207913 29253093 104067 539760 0 0 44484 938178 6464 15540 0 0 (radio 2.-130% / 2.23% tx 0.34% / 0.65% listen 1.-64% / 1.58%)
+31:03.336	ID:1	He:(43.04,93.82)
+32:02.884	ID:1	 122983 P 193.12 31 1295131 30148532 130624 581218 0 0 87217 895439 26557 41458 0 0 (radio 2.-111% / 6.92% tx 0.41% / 2.70% listen 1.-52% / 4.21%)
+32:03.309	ID:1	He:(40.61,92.82)
+33:02.884	ID:1	 126823 P 193.12 32 1335213 31091130 134728 601869 0 0 40081 942598 4104 20651 0 0 (radio 2.-106% / 2.51% tx 0.41% / 0.41% listen 1.-47% / 2.10%)
+33:03.360	ID:1	He:(40.62,94.86)
+34:02.883	ID:1	 130663 P 193.12 33 1372858 32035989 137099 619044 0 0 37644 944859 2371 17175 0 0 (radio 2.-103% / 1.98% tx 0.41% / 0.24% listen 1.-44% / 1.74%)
+34:03.348	ID:1	He:(40.61,91.89)
+35:02.883	ID:1	 134503 P 193.12 34 1413079 32978352 141188 637739 0 0 40220 942363 4089 18695 0 0 (radio 2.-99% / 2.31% tx 0.41% / 0.41% listen 1.-40% / 1.90%)
+35:03.342	ID:1	He:(40.25,101.94)
+36:02.883	ID:1	 138343 P 193.12 35 1448087 33926035 143376 653432 0 0 35006 947683 2188 15693 0 0 (radio 2.-97% / 1.81% tx 0.40% / 0.22% listen 1.-37% / 1.59%)
+36:03.360	ID:1	He:(40.62,97.11)
+37:02.882	ID:1	 142183 P 193.12 36 1479987 34876799 143376 672946 0 0 31898 950764 0 19514 0 0 (radio 2.-94% / 1.98% tx 0.39% / 0.00% listen 1.-34% / 1.98%)
+37:03.434	ID:1	He:(40.61,40.61,41.83,124.38)
+38:02.883	ID:1	 146023 P 193.12 37 1523922 35815412 148648 689236 0 0 43934 938613 5272 16290 0 0 (radio 2.-91% / 2.19% tx 0.39% / 0.53% listen 1.-31% / 1.65%)
+38:03.349	ID:1	He:(40.62,92.96)
+39:02.883	ID:1	 149863 P 193.12 38 1560370 36761545 151154 704453 0 0 36446 946133 2506 15217 0 0 (radio 2.-89% / 1.80% tx 0.39% / 0.25% listen 1.-29% / 1.54%)
+39:03.318	ID:1	He:(40.26,98.96)
+40:02.884	ID:1	 153703 P 193.12 39 1600505 37704079 155543 718940 0 0 40134 942534 4389 14487 0 0 (radio 2.-197% / 1.92% tx 0.39% / 0.44% listen 1.-27% / 1.47%)
+40:03.358	ID:1	He:(41.44,90.75)
+41:02.883	ID:1	 157543 P 193.12 40 1640995 38646252 159969 736055 0 0 40488 942173 4426 17115 0 0 (radio 2.-191% / 2.19% tx 0.39% / 0.45% listen 1.-24% / 1.74%)
+41:03.393	ID:1	He:(40.25,40.25,111.29)
+42:02.883	ID:1	 161383 P 193.12 41 1686000 39583915 166163 757402 0 0 45004 937663 6194 21347 0 0 (radio 2.-185% / 2.80% tx 0.40% / 0.63% listen 1.-21% / 2.17%)
+42:03.360	ID:1	He:(40.25,92.29)
+43:02.884	ID:1	 165223 P 193.12 42 1765782 40486793 187496 794989 0 0 79781 902878 21333 37587 0 0 (radio 2.-171% / 5.99% tx 0.44% / 2.17% listen 1.-14% / 3.82%)
+43:03.317	ID:1	He:(41.44,88.94)
+44:02.883	ID:1	 169063 P 193.12 43 1807057 41428201 191588 811083 0 0 41274 941408 4092 16094 0 0 (radio 2.-167% / 2.05% tx 0.44% / 0.41% listen 1.-12% / 1.63%)
+44:03.298	ID:1	He:(41.44,99.51)
+45:02.883	ID:1	 172903 P 193.12 44 1857602 42360288 200109 835168 0 0 50543 932087 8521 24085 0 0 (radio 2.-161% / 3.31% tx 0.45% / 0.86% listen 1.-9% / 2.45%)
+45:03.439	ID:1	He:(39.36,39.36,45.00,120.85)
+46:02.883	ID:1	 176743 P 193.12 45 1895288 43305268 202156 854973 0 0 37684 944980 2047 19805 0 0 (radio 2.-157% / 2.22% tx 0.44% / 0.20% listen 1.-6% / 2.01%)
+46:03.306	ID:1	He:(41.45,94.63)
+47:02.883	ID:1	 180583 P 193.12 46 1935245 44247999 206256 871014 0 0 39956 942731 4100 16041 0 0 (radio 2.-153% / 2.04% tx 0.44% / 0.41% listen 1.-98% / 1.63%)
+47:03.347	ID:1	He:(42.52,94.62)
+48:02.884	ID:1	 184423 P 193.12 47 1973172 45192754 208963 889910 0 0 37926 944755 2707 18896 0 0 (radio 2.-150% / 2.19% tx 0.44% / 0.27% listen 1.-94% / 1.92%)
+48:03.350	ID:1	He:(42.82,95.20)
+49:02.884	ID:1	 188263 P 193.12 48 2008741 46139791 211017 905195 0 0 35567 947037 2054 15285 0 0 (radio 2.-147% / 1.76% tx 0.43% / 0.20% listen 1.-91% / 1.55%)
+49:03.397	ID:1	He:(39.36,42.81,43.04,133.25)
+50:02.883	ID:1	 192103 P 193.12 49 2045623 47085576 213394 927813 0 0 36881 945785 2377 22618 0 0 (radio 2.-143% / 2.54% tx 0.43% / 0.24% listen 1.-86% / 2.30%)
+50:03.370	ID:1	He:(40.61,97.66)
+51:02.883	ID:1	 195943 P 193.12 50 2079445 48034437 214644 946479 0 0 33821 948861 1250 18666 0 0 (radio 2.-140% / 2.02% tx 0.42% / 0.12% listen 1.-83% / 1.89%)
+51:03.329	ID:1	He:(43.04,96.81)
+52:02.884	ID:1	 199783 P 193.12 51 2120117 48976457 218706 970090 0 0 40671 942020 4062 23611 0 0 (radio 2.-136% / 2.81% tx 0.42% / 0.41% listen 1.-79% / 2.40%)
+52:03.352	ID:1	He:(40.61,100.88)
+53:02.884	ID:1	 203623 P 193.12 52 2154017 49925239 219815 989621 0 0 33899 948782 1109 19531 0 0 (radio 2.-133% / 2.10% tx 0.42% / 0.11% listen 1.-75% / 1.98%)
+53:03.370	ID:1	He:(40.62,100.55)
+54:02.888	ID:1	 207463 P 193.12 53 2231649 50830338 239733 1023320 0 0 77630 905099 19918 33699 0 0 (radio 2.-124% / 5.45% tx 0.45% / 2.02% listen 1.-70% / 3.42%)
+54:03.311	ID:1	He:(43.04,101.23)
+55:02.884	ID:1	 211303 P 193.12 54 2272273 51772347 243834 1039820 0 0 40622 942009 4101 16500 0 0 (radio 2.-122% / 2.09% tx 0.45% / 0.41% listen 1.-67% / 1.67%)
+55:03.434	ID:1	He:(41.44,103.06)
+56:02.884	ID:1	 215143 P 193.12 55 2315452 52711848 248252 1057380 0 0 43177 939501 4418 17560 0 0 (radio 2.-197% / 2.23% tx 0.45% / 0.44% listen 1.-64% / 1.78%)
+56:03.414	ID:1	He:(43.03,101.00)
+57:02.884	ID:1	 218983 P 193.12 56 2352114 53657870 250271 1074909 0 0 36660 946022 2019 17529 0 0 (radio 2.-194% / 1.98% tx 0.44% / 0.20% listen 1.-62% / 1.78%)
+57:03.341	ID:1	He:(44.24,101.70)
+58:02.883	ID:1	 222823 P 193.12 57 2383998 54608670 250271 1094540 0 0 31882 950800 0 19631 0 0 (radio 2.-191% / 1.99% tx 0.43% / 0.00% listen 1.-59% / 1.99%)
+58:03.359	ID:1	He:(39.36,97.75)
+59:02.883	ID:1	 226663 P 193.12 58 2414892 55560466 250271 1106998 0 0 30892 951796 0 12458 0 0 (radio 2.-189% / 1.26% tx 0.43% / 0.00% listen 1.-58% / 1.26%)
+59:03.348	ID:1	He:(40.61,94.88)
+1:00:02.884	ID:1	 230503 P 193.12 59 2450989 56507045 252647 1122199 0 0 36095 946579 2376 15201 0 0 (radio 2.-186% / 1.78% tx 0.42% / 0.24% listen 1.-56% / 1.54%)
+1:00:03.339	ID:1	He:(39.36,96.91)
